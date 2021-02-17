@@ -8,63 +8,45 @@
 import Foundation
 
 
-struct Match : Codable, Hashable {
-    var match_id : Int
-    var player_slot : Int
-    var radiant_win : Bool
-    var duration : Int
-    var game_mode : Int
-    var lobby_type : Int
-    var hero_id : Int
-    var start_time : Int
+struct Match : Codable, Hashable, Identifiable {
+    let id = UUID()
+    var match_id : Int?
+    var player_slot : Int?
+    var radiant_win : Bool?
+    var duration : Int?
+    var game_mode : Int?
+    var lobby_type : Int?
+    var hero_id : Int?
+    var start_time : Int?
     var version : Int?
-    var kills : Int
-    var deaths : Int
-    var assists : Int
-    var skill : Int
-    var party_size : Int
-    
+    var kills : Int?
+    var deaths : Int?
+    var assists : Int?
+    var skill : Int?
+    var party_size : Int?
 }
 
 struct HeroesStat : Codable, Hashable {
-    var hero_id : String
-    var last_played : Int
-    var games : Int
-    var win : Int
-    var with_games : Int
-    var with_win : Int
-    var against_games : Int
-    var against_win : Int
-}
-
-struct WL : Codable {
+    var hero_id : String?
+    var last_played : Int?
+    var games : Int?
     var win : Int?
-    var lose : Int?
+    var with_games : Int?
+    var with_win : Int?
+    var against_games : Int?
+    var against_win : Int?
 }
-
-//struct LobbyType : Decodable {
-//    var id : Int
-//    var name : String
-//    var balance : Bool?
-//}
-//
-//
-//struct GameMode : Decodable {
-//    var id : Int
-//    var name : String
-//    var balance : Bool?
-//}
 
 
 
 struct Hero : Codable {
-    var id : Int
-    var name : String
-    var localized_name : String
-    var primary_attr : String
-    var attack_type : String
-    var roles : [String]
-    var legs : Int
+    var id : Int?
+    var name : String?
+    var localized_name : String?
+    var primary_attr : String?
+    var attack_type : String?
+    var roles : [String]?
+    var legs : Int?
 }
 
 enum MatchSection : CaseIterable {

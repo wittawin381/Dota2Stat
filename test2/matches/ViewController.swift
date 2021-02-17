@@ -10,7 +10,8 @@ import CoreData
 import Alamofire
 import Combine
 
-class ViewController: UIViewController {
+class ViewController: UIViewController , Storyboarded{
+    weak var coordinator: MainCoordinator?
     @IBOutlet weak var listTable: UITableView!
     let search = UISearchController()
     let viewModel = MatchesVM()
@@ -21,7 +22,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        viewModel.matches.sink(receiveCompletion: {_ in }, receiveValue: { value in
+        self.viewModel.matches.sink(receiveCompletion: {_ in }, receiveValue: { value in
 //            self.update(animate: true)
             self.viewModel.heroesStat.sink(receiveCompletion: {_ in }, receiveValue: { value in
                 self.update(animate: true)
@@ -39,12 +40,13 @@ class ViewController: UIViewController {
     }
     
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.destination is ReminderListViewController{
-//            let viewController = segue.destination as! ReminderListViewController
-//            viewController.pageTitle = self.listItems![(listTable.indexPathForSelectedRow!.row)].title!
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.destination is AllGamesView{
+//            let viewController = segue.destination as! AllGamesView
+//            
 //        }
-    }
+//    }
 }
 
 extension ViewController : UITableViewDelegate {
@@ -52,44 +54,44 @@ extension ViewController : UITableViewDelegate {
         return UITableViewDiffableDataSource(
             tableView: listTable,
             cellProvider: { tableView, indexPath, item in
+                
+                
                 if item is Match {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "listItemCell", for: indexPath) as! FixtureTableViewCell
                     let match = self.viewModel.matches.value[indexPath.row]
-                    let a = match.player_slot / 128 == 0
-                    let b = match.radiant_win
+                    let a = match.player_slot! / 128 == 0
+                    let b = match.radiant_win!
+                    let hero = Dota.shared.heroes.first(where: {$0.id == Int(match.hero_id ?? 99)}) ?? Dota.shared.heroes[91]
+                    let heroname = (hero.name ?? "").lowercased().replacingOccurrences(of: "npc_dota_hero_", with: "")
+                    cell.heroImg.image = UIImage(named: heroname + "_full")
                     cell.result.text = ( a && b || !a && !b ) ? "Won" : "Lost"
                     cell.result.textColor = cell.result.text == "Won" ? .systemGreen : .red
-                    cell.bracket.text = self.viewModel.lobbyType[match.lobby_type]
-                    cell.gameMode.text = self.viewModel.gameMode[match.game_mode]
-                    cell.kda.text = String(match.kills) + " / " + String(match.deaths) + " / " + String(match.assists)
+                    cell.bracket.text = Dota.lobbyType[match.lobby_type ?? 0]
+                    cell.gameMode.text = Dota.gameMode[match.game_mode ?? 0]
+                    cell.kda.text = String(match.kills ?? 0) + " / " + String(match.deaths ?? 0) + " / " + String(match.assists ?? 0)
                     return cell
                 }
                 else {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "heroesCell", for: indexPath) as! MyHeoresTableViewCell
                     let myStat = self.viewModel.heroesStat.value[indexPath.row]
-                    let hero = self.viewModel.heroes.first(where: {$0.id == Int(myStat.hero_id)}) ?? self.viewModel.heroes[91]
-                    let heroname = (hero.name ).lowercased().replacingOccurrences(of: "npc_dota_hero_", with: "")
-                    let winrate = Double(myStat.win) * 100.0 /  Double(myStat.games)
+                    let hero = Dota.shared.heroes.first(where: {$0.id == Int(myStat.hero_id ?? "91")}) ?? Dota.shared.heroes[91]
+                    let heroname = (hero.name ?? "").lowercased().replacingOccurrences(of: "npc_dota_hero_", with: "")
+                    
+                    let winrate = Double(myStat.win ?? 0) * 100.0 /  Double(myStat.games ?? 0)
                     cell.heroImg.image = UIImage(named: heroname + "_full")
                     cell.heroName.text = hero.localized_name
-                    cell.matchPlayed.text = String(myStat.games)
+                    cell.matchPlayed.text = String(myStat.games ?? 0)
                     cell.matchPlayProg.progress = 0
                     cell.winrate.text = myStat.games == 0 ? "0 %" : String(format: "%.2f %%",winrate)
                     cell.winrateProg.progress = 0
-//                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                        // your code here
                     UIView.animate(withDuration: 1.0, animations: {
                         cell.winrateProg.setProgress(Float(winrate/100), animated: true)
+                        cell.winrateProg.progressTintColor = UIColor(hue: (CGFloat(winrate) / 100.0) / 3, saturation: 1.0, brightness: 1.0, alpha: 1.0)
                     })
                     UIView.animate(withDuration: 1.0, animations: {
-                        cell.matchPlayProg.setProgress(Float(myStat.games) / Float(self.viewModel.heroesStat.value[0].games), animated: true)
+                        cell.matchPlayProg.setProgress(Float(myStat.games ?? 0) / Float(self.viewModel.heroesStat.value[0].games ?? 0), animated: true)
+                        cell.matchPlayProg.progressTintColor =  UIColor(hue: CGFloat(cell.matchPlayProg.progress) / 3, saturation: 1.0, brightness: 1.0, alpha: 1.0)
                     })
-//                        
-//                    }
-                        
-                    
-                    
-                    
                     return cell
                 }
             }
@@ -98,14 +100,20 @@ extension ViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        if (indexPath.section == 0) {
+            coordinator?.toAllGamesView()
+            
+        }
+        else {
+            coordinator?.toHeroStatView()
+        }
     }
-    
     
     func update(animate : Bool) {
         var snapshot = NSDiffableDataSourceSnapshot<MatchSection,AnyHashable>()
         snapshot.appendSections(MatchSection.allCases)
-        snapshot.appendItems(viewModel.matches.value, toSection: .matches)
-        snapshot.appendItems(Array(viewModel.heroesStat.value.prefix(5)), toSection: .heroes)
+        snapshot.appendItems(Array(self.viewModel.matches.value.prefix(5)), toSection: .matches)
+        snapshot.appendItems(Array(self.viewModel.heroesStat.value.prefix(5)), toSection: .heroes)
         dataSource.apply(snapshot,animatingDifferences: animate)
     }
     
