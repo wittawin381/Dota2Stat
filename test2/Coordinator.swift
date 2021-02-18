@@ -15,7 +15,7 @@ protocol Coordinator {
 }
 
 
-class MainCoordinator : Coordinator {
+class HomeCoordinator : Coordinator {
     var childCoordinator = [Coordinator]()
     var navigationController: UINavigationController
     
@@ -30,27 +30,12 @@ class MainCoordinator : Coordinator {
     
     func start() {
         let vc = ViewController.instantiate()
-        vc.tabBarItem = UITabBarItem(title: "Overview", image: UIImage(systemName: "house"), tag: 0)
+//        vc.tabBarItem =
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
+        navigationController.tabBarItem = UITabBarItem(title: "Overview", image: UIImage(systemName: "house"), tag: 0)
     }
     
-    func start(_ tab : TabController) {
-        switch tab {
-        case .home:
-            let vc = ViewController.instantiate()
-            vc.tabBarItem = UITabBarItem(title: "Overview", image: UIImage(systemName: "house"), tag: 0)
-            vc.coordinator = self
-            navigationController.pushViewController(vc, animated: true)
-        case .peer:
-            let vc = RecordView.instantiate()
-            vc.tabBarItem = UITabBarItem(title: "Overview", image: UIImage(systemName: "house"), tag: 0)
-            vc.coordinator = self
-            navigationController.pushViewController(vc, animated: true)
-        }
-        
-        
-    }
     
     func toAllGamesView() {
         let vc = AllGamesView.instantiate()

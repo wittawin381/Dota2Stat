@@ -11,7 +11,7 @@ import Alamofire
 import Combine
 
 class ViewController: UIViewController , Storyboarded{
-    weak var coordinator: MainCoordinator?
+    weak var coordinator: HomeCoordinator?
     @IBOutlet weak var listTable: UITableView!
     let search = UISearchController()
     let viewModel = MatchesVM()

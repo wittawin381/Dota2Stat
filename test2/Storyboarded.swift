@@ -12,9 +12,6 @@ protocol Storyboarded {
     static func instantiate() -> Self
 }
 
-extension Storyboarded where Self : UIViewController {
-    
-}
 
 //extension UIViewController : Storyboarded {
 //    static func instantiate() -> Self{

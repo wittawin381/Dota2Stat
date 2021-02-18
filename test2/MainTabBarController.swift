@@ -9,11 +9,16 @@ import Foundation
 import UIKit
 
 class MainTabBarController : UITabBarController {
-    let home = MainCoordinator(UINavigationController())
-    let peer = MainCoordinator(UINavigationController())
+    
+    let peernav = UINavigationController()
+    let homenav = UINavigationController()
     override func viewDidLoad() {
-        home.start(.home)
-        peer.start(.peer)
+        peernav.navigationBar.prefersLargeTitles = true
+        homenav.navigationBar.prefersLargeTitles = true
+        let peer = RecordCoordinator(peernav)
+        let home = HomeCoordinator(homenav)
+        home.start()
+        peer.start()
         viewControllers = [home.navigationController,peer.navigationController]
     }
 }

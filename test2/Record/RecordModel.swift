@@ -11,6 +11,4 @@ enum RecordSection : CaseIterable {
     case record
 }
 
-struct Record {
-    var heroImg : String
-}
+

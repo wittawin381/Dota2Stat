@@ -29,6 +29,8 @@
 		258951D125DC2A7200B36E68 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258951D025DC2A7200B36E68 /* RecordView.swift */; };
 		258951D625DC2B8B00B36E68 /* RecordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258951D525DC2B8B00B36E68 /* RecordVM.swift */; };
 		258951DB25DC2BB400B36E68 /* RecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258951DA25DC2BB400B36E68 /* RecordModel.swift */; };
+		258951E025DCC2B900B36E68 /* RecordCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258951DF25DCC2B900B36E68 /* RecordCoordinator.swift */; };
+		258951EC25DD424A00B36E68 /* RecordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258951EB25DD424900B36E68 /* RecordCollectionViewCell.swift */; };
 		25C9B21925DA970600DD9500 /* AllGames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C9B21825DA970600DD9500 /* AllGames.swift */; };
 		25C9B22125DA97AA00DD9500 /* AllGamesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C9B22025DA97AA00DD9500 /* AllGamesVM.swift */; };
 		25C9B22625DB542F00DD9500 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C9B22525DB542F00DD9500 /* Coordinator.swift */; };
@@ -89,6 +91,8 @@
 		258951D025DC2A7200B36E68 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
 		258951D525DC2B8B00B36E68 /* RecordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordVM.swift; sourceTree = "<group>"; };
 		258951DA25DC2BB400B36E68 /* RecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordModel.swift; sourceTree = "<group>"; };
+		258951DF25DCC2B900B36E68 /* RecordCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCoordinator.swift; sourceTree = "<group>"; };
+		258951EB25DD424900B36E68 /* RecordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCollectionViewCell.swift; sourceTree = "<group>"; };
 		25C9B21825DA970600DD9500 /* AllGames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGames.swift; sourceTree = "<group>"; };
 		25C9B22025DA97AA00DD9500 /* AllGamesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGamesVM.swift; sourceTree = "<group>"; };
 		25C9B22525DB542F00DD9500 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -179,6 +183,7 @@
 				2529801C253AB96400ECEE6E /* Info.plist */,
 				25298014253AB96200ECEE6E /* test2.xcdatamodeld */,
 				25C9B22525DB542F00DD9500 /* Coordinator.swift */,
+				258951DF25DCC2B900B36E68 /* RecordCoordinator.swift */,
 				25C9B22A25DB556700DD9500 /* Storyboarded.swift */,
 				25C9B23225DB638E00DD9500 /* Dota2.swift */,
 			);
@@ -235,11 +240,20 @@
 		258951CF25DC2A5B00B36E68 /* Record */ = {
 			isa = PBXGroup;
 			children = (
+				258951EA25DD420600B36E68 /* collectioncell */,
 				258951D025DC2A7200B36E68 /* RecordView.swift */,
 				258951D525DC2B8B00B36E68 /* RecordVM.swift */,
 				258951DA25DC2BB400B36E68 /* RecordModel.swift */,
 			);
 			path = Record;
+			sourceTree = "<group>";
+		};
+		258951EA25DD420600B36E68 /* collectioncell */ = {
+			isa = PBXGroup;
+			children = (
+				258951EB25DD424900B36E68 /* RecordCollectionViewCell.swift */,
+			);
+			path = collectioncell;
 			sourceTree = "<group>";
 		};
 		25C9B21725DA96E400DD9500 /* AllMatches */ = {
@@ -531,10 +545,12 @@
 				258951CB25DC263100B36E68 /* MainTabBarController.swift in Sources */,
 				25C9B22625DB542F00DD9500 /* Coordinator.swift in Sources */,
 				2551491825D7F5D8008D7436 /* matchesVM.swift in Sources */,
+				258951E025DCC2B900B36E68 /* RecordCoordinator.swift in Sources */,
 				2551491325D7F3EF008D7436 /* FixtureTableViewCell.swift in Sources */,
 				25EAC9B625DBBB470036F4A8 /* HeroStatModel.swift in Sources */,
 				258951D625DC2B8B00B36E68 /* RecordVM.swift in Sources */,
 				25C9B23825DB750100DD9500 /* AllGamesModel.swift in Sources */,
+				258951EC25DD424A00B36E68 /* RecordCollectionViewCell.swift in Sources */,
 				25EAC9B125DBB94E0036F4A8 /* HeroStatVM.swift in Sources */,
 				2551492325D82DE8008D7436 /* OpenDota.swift in Sources */,
 				258951D125DC2A7200B36E68 /* RecordView.swift in Sources */,

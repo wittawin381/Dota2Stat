@@ -10,15 +10,15 @@ import UIKit
 import Combine
 
 class AllGamesView : UIViewController, Storyboarded {
-    weak var coordinator : MainCoordinator?
+    weak var coordinator : HomeCoordinator?
     var subscription = Set<AnyCancellable>()
-    var viewModel : AllGamesVM?
+    var viewModel : AllGamesVM!
     lazy var dataSource = makeDataSource()
     @IBOutlet weak var listTable: UITableView!
     override func viewDidLoad() {
         listTable.delegate = self
         listTable.dataSource = dataSource
-        viewModel?.matches.sink(receiveCompletion: {_ in}, receiveValue: { value in
+        viewModel.matches.sink(receiveCompletion: {_ in}, receiveValue: { value in
             self.update(animate: false)
         }).store(in: &subscription)
     }
@@ -52,7 +52,7 @@ extension AllGamesView : UITableViewDelegate {
             tableView: listTable,
             cellProvider: { tableView, indexPath, item in
                 let cell = tableView.dequeueReusableCell(withIdentifier: "listItemCell", for: indexPath) as! FixtureTableViewCell
-                let match = self.viewModel!.matches.value[indexPath.row]
+                let match = self.viewModel.matches.value[indexPath.row]
                 let a = match.player_slot! / 128 == 0
                 let b = match.radiant_win!
                 let hero = Dota.shared.heroes.first(where: {$0.id == Int(match.hero_id ?? 99)}) ?? Dota.shared.heroes[91]
@@ -70,7 +70,7 @@ extension AllGamesView : UITableViewDelegate {
     func update(animate : Bool) {
         var snapshot = NSDiffableDataSourceSnapshot<GameSection,AnyHashable>()
         snapshot.appendSections(GameSection.allCases)
-        snapshot.appendItems(self.viewModel!.matches.value, toSection: .matches)
+        snapshot.appendItems(self.viewModel.matches.value, toSection: .matches)
         dataSource.apply(snapshot,animatingDifferences: animate)
     }
     
@@ -85,7 +85,7 @@ extension AllGamesView : UIScrollViewDelegate {
                 print("LOADDDDed")
                 return
             }
-            viewModel?.loadMoreData()
+            viewModel.loadMoreData()
             update(animate: true)
         }
     }

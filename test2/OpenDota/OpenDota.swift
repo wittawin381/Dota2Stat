@@ -19,6 +19,7 @@ class OpenDota {
         case matches
         case heroes
         case winlose
+        case record
     }
     
     func get<T:Codable>(_ type: DataType, params: [String : Any] = [:], withType: T.Type) -> Future<T,Error>{
@@ -31,6 +32,8 @@ class OpenDota {
             geturl = url + "/heroes"
         case .winlose:
             geturl = url + "/wl"
+        case .record:
+            geturl = url + "/totals"
         }
 //        let params = ["offset":from]
         
