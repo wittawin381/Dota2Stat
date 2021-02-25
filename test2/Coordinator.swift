@@ -30,8 +30,9 @@ class HomeCoordinator : Coordinator {
     
     func start() {
         let vc = ViewController.instantiate()
-//        vc.tabBarItem =
+//        let vm = HomeVM()
         vc.coordinator = self
+//        vc.viewModel = vm
         navigationController.pushViewController(vc, animated: true)
         navigationController.tabBarItem = UITabBarItem(title: "Overview", image: UIImage(systemName: "house"), tag: 0)
     }

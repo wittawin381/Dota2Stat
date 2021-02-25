@@ -29,9 +29,9 @@ class RecordView : UIViewController, Storyboarded {
         marginLeft = (view.frame.width - (view.frame.width * 0.4 * 2) - 20 ) / 2
         marginRight = marginLeft
         collectionView.collectionViewLayout = layout
-        viewModel.record.sink(receiveCompletion: { _ in}, receiveValue: { value in
-            self.update(animate: false)
-        }).store(in: &subscription)
+//        viewModel.record.sink(receiveCompletion: { _ in}, receiveValue: { value in
+//            self.update(animate: false)
+//        }).store(in: &subscription)
     }
 }
 
