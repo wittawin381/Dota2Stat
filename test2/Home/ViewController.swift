@@ -55,8 +55,6 @@ extension ViewController : UITableViewDelegate {
         return UITableViewDiffableDataSource(
             tableView: listTable,
             cellProvider: { tableView, indexPath, item in
-                
-                
                 if item is Home.TableViewCell.ViewModel.MatchCell {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "listItemCell", for: indexPath) as! FixtureTableViewCell
                     let match = self.matches[indexPath.row] as! Home.TableViewCell.ViewModel.MatchCell
@@ -85,12 +83,10 @@ extension ViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if (indexPath.section == 0) {
-            coordinator?.toAllGamesView()
-            
-            
+            router?.routeToAllGames()
         }
         else {
-            coordinator?.toHeroStatView()
+            router?.routeToHeroStat()
         }
     }
     

@@ -7,6 +7,29 @@
 
 import Foundation
 
-enum GameSection : CaseIterable {
-    case matches
+
+
+enum AllGames {
+    enum GameSection : CaseIterable {
+        case matches
+    }
+    
+    enum Cell {
+        struct Request {
+            
+        }
+        struct Response {
+            var items : [Match]
+        }
+        struct ViewModel {
+            struct Item : Hashable {
+                var heroImg : String
+                var result : String
+                var bracket : String
+                var gameMode : String
+                var kda : String
+            }
+            var items : [Item]
+        }
+    }
 }

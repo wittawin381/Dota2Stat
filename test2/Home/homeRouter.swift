@@ -19,16 +19,17 @@ protocol HomeRouterDataPassing {
 
 
 class HomeRouter : HomeRouterDataPassing, HomeRouterLogic {
-    weak var viewController : UIViewController?
+    weak var viewController : ViewController?
     var dataStore : HomeDataStore?
     func routeToAllGames() {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "AllGamesView") as! AllGamesView
-//        let dataStore = vc
+        passDataToAllGames(source: dataStore!  , destination: &(vc.router!.dataStore!) )
         navigate(to: vc, from: viewController!)
     }
     
     func routeToHeroStat() {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "HeroStatView") as! AllGamesView
+        
         navigate(to: vc, from: viewController!)
     }
     
@@ -36,5 +37,8 @@ class HomeRouter : HomeRouterDataPassing, HomeRouterLogic {
         source.navigationController?.pushViewController(destination, animated: true)
     }
     
+    func passDataToAllGames(source : HomeDataStore, destination : inout AllGamesDataStore) {
+        destination.games = source.games!
+    }
     
 }

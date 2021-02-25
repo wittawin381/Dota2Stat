@@ -137,10 +137,7 @@ struct Hero : Codable {
     var legs : Int?
 }
 
-struct Record : Codable, Hashable {
-    var field : String?
-    var sum : Float?
-}
+
 
 struct MatchDetail : Codable {
     var players : [Player]
