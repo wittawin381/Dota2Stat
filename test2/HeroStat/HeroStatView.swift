@@ -9,58 +9,84 @@ import Foundation
 import UIKit
 import Combine
 
+protocol HeroStatViewLogic : class {
+    func displayHeroStat(viewModel: HeroStat.Cell.ViewModel)
+}
 
-class HeroStatView : UIViewController, Storyboarded {
+class HeroStatView : UIViewController, Storyboarded, HeroStatViewLogic {
     weak var coordinator : HomeCoordinator?
     var viewModel : HeroStatVM!
+    var interactor : HeroStatBusinessLogic?
+    var router : (HeroStatRouterLogic & HeroStatPassingData)?
     var subscription = Set<AnyCancellable>()
+    var stats = [HeroStat.Cell.ViewModel.Item]()
     @IBOutlet weak var listTable: UITableView!
     
     private lazy var dataSource = makeDataSource()
     override func viewDidLoad() {
         listTable.delegate = self
         listTable.dataSource = dataSource
-        self.viewModel.myStat.sink(receiveCompletion: {_ in}, receiveValue: { value in
-            self.update(animate: false)
-        }).store(in: &subscription)
+        interactor?.displayItems(request: HeroStat.Cell.Request())
     }
     
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nil)
+        setup()
+    }
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setup()
+    }
+    
+    func setup() {
+        let viewController = self
+        let interactor = HeroStatInteractor()
+        let presenter = HeroStatPresenter()
+        let router = HeroStatRouter()
+        viewController.interactor = interactor
+        viewController.router = router
+        router.dataStore = interactor
+        interactor.presenter = presenter
+        presenter.viewController = viewController
+        
+    }
+    
+    func displayHeroStat(viewModel: HeroStat.Cell.ViewModel) {
+        stats = viewModel.items
+        update(animate: false)
+    }
 }
 
 extension HeroStatView : UITableViewDelegate {
     
-    func makeDataSource() -> UITableViewDiffableDataSource<HeroStatSection, AnyHashable> {
+    func makeDataSource() -> UITableViewDiffableDataSource<HeroStat.HeroStatSection, AnyHashable> {
         return UITableViewDiffableDataSource(
             tableView: listTable,
-            cellProvider: { tableView, indexPath, item in
+            cellProvider: {[unowned self] tableView, indexPath, item in
                 let cell = tableView.dequeueReusableCell(withIdentifier: "heroesCell", for: indexPath) as! MyHeoresTableViewCell
-                let myStat = self.viewModel.myStat.value[indexPath.row]
-                let hero = Dota.shared.heroes.first(where: {$0.id == Int(myStat.hero_id ?? "91")}) ?? Dota.shared.heroes[91]
-                let heroname = (hero.name ?? "").lowercased().replacingOccurrences(of: "npc_dota_hero_", with: "")
-                
-                let winrate = Double(myStat.win ?? 0) * 100.0 /  Double(myStat.games ?? 0)
-                cell.heroImg.image = UIImage(named: heroname + "_full")
-                cell.heroName.text = hero.localized_name
-                cell.matchPlayed.text = String(myStat.games ?? 0)
-                cell.matchPlayProg.progress = 0
-                cell.winrate.text = myStat.games == 0 ? "0 %" : String(format: "%.2f %%",winrate)
-                cell.winrateProg.progress = 0
-                UIView.animate(withDuration: 1.0, animations: {
-                    cell.winrateProg.setProgress(Float(winrate/100), animated: true)
-                    cell.winrateProg.progressTintColor = UIColor(hue: (CGFloat(winrate) / 100.0) / 3, saturation: 1.0, brightness: 1.0, alpha: 1.0)
-                })
-                UIView.animate(withDuration: 1.0, animations: {
-                    cell.matchPlayProg.setProgress(Float(myStat.games ?? 0) / Float(self.viewModel.myStat.value[0].games ?? 0), animated: true)
-                    cell.matchPlayProg.progressTintColor =  UIColor(hue: CGFloat(cell.matchPlayProg.progress) / 3, saturation: 1.0, brightness: 1.0, alpha: 1.0)
-                })
+                let stat = self.stats[indexPath.row]
+                cell.heroImg.image = UIImage(named: stat.heroImg)
+                cell.heroName.text = stat.heroName
+                cell.matchPlayed.text = stat.matchPlayed
+                cell.winrate.text = stat.winrate
+                cell.winrateProg.setProgress(stat.winrateProg, animated: true)
+                cell.matchPlayProg.setProgress(stat.matchPlayProg, animated: true)
+//                UIView.animate(withDuration: 1.0, animations: {
+//
+//                    cell.winrateProg.progressTintColor = UIColor(hue: (CGFloat(winrate) / 100.0) / 3, saturation: 1.0, brightness: 1.0, alpha: 1.0)
+//                })
+//                UIView.animate(withDuration: 1.0, animations: {
+//
+//                    cell.matchPlayProg.progressTintColor =  UIColor(hue: CGFloat(cell.matchPlayProg.progress) / 3, saturation: 1.0, brightness: 1.0, alpha: 1.0)
+//                })
                 return cell
             })
     }
     
     func update(animate : Bool) {
-        var snapshot = NSDiffableDataSourceSnapshot<HeroStatSection,AnyHashable>()
-        snapshot.appendSections(HeroStatSection.allCases)
-        snapshot.appendItems(self.viewModel.myStat.value, toSection: .stat)
+        var snapshot = NSDiffableDataSourceSnapshot<HeroStat.HeroStatSection,AnyHashable>()
+        snapshot.appendSections(HeroStat.HeroStatSection.allCases)
+        snapshot.appendItems(stats, toSection: .stat)
         dataSource.apply(snapshot,animatingDifferences: animate)
     }
 }

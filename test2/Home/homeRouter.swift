@@ -11,6 +11,7 @@ import UIKit
 protocol HomeRouterLogic {
     func routeToAllGames()
     func routeToHeroStat()
+    func routeToGame(matchID : String)
 }
 
 protocol HomeRouterDataPassing {
@@ -28,8 +29,14 @@ class HomeRouter : HomeRouterDataPassing, HomeRouterLogic {
     }
     
     func routeToHeroStat() {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "HeroStatView") as! AllGamesView
-        
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "HeroStatView") as! HeroStatView
+        passDataToHeroStat(source: dataStore!, destination: &(vc.router!.dataStore!))
+        navigate(to: vc, from: viewController!)
+    }
+    
+    func routeToGame(matchID: String) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "GameView") as! GameView
+        passDataToGame(source: dataStore!, destination: &(vc.router!.dataStore!), matchID: matchID)
         navigate(to: vc, from: viewController!)
     }
     
@@ -39,6 +46,14 @@ class HomeRouter : HomeRouterDataPassing, HomeRouterLogic {
     
     func passDataToAllGames(source : HomeDataStore, destination : inout AllGamesDataStore) {
         destination.games = source.games!
+    }
+    
+    func passDataToHeroStat(source : HomeDataStore, destination : inout HeroStatDataStore) {
+        destination.stats = source.stats!
+    }
+    
+    func passDataToGame(source : HomeDataStore, destination : inout GameDataStore, matchID: String) {
+        destination.match_id = matchID
     }
     
 }

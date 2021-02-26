@@ -26,6 +26,7 @@ class HomePresenter : HomePresentationLogic {
             let heroname = (hero.name ?? "").lowercased().replacingOccurrences(of: "npc_dota_hero_", with: "")
             returnMatches.append(
                 Home.TableViewCell.ViewModel.MatchCell(
+                    matchID : String(match.match_id!),
                     heroImg: heroname + "_full",
                     result: ( a && b || !a && !b ) ? "Won" : "Lost",
                     bracket: Dota.lobbyType[match.lobby_type ?? 0]!,

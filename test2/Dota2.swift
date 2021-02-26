@@ -38,7 +38,7 @@ class Dota {
         
         heroes = jsonParse(from: "Heroes.json", type: [Hero].self)
         items = jsonParse(from: "Items.json", type: [String : Item].self)
-        print(items.first(where: {$0.value.id == 303})?.key)
+//        print(items.first(where: {$0.value.id == 303})?.value.img)
     }
     
     private func jsonParse<T:Codable>(from path : String, type : T.Type) -> T{
@@ -58,12 +58,41 @@ class Dota {
         return data
     }
     
+    func getItemImg(images : [Int]) -> Future<Data,Never>{
+        var urls = [URL]()
+        for id in images {
+            let imageURL = items.first(where: {$0.value.id == id})?.value.img ?? "/Not found"
+            let fullURL = "https://api.opendota.com" + imageURL
+            urls.append((URL(string: fullURL) ?? URL(string: "https://lh3.googleusercontent.com/proxy/K7N6O3yIk1XVUboqaWg2RxlEMaJKXeAyRNDGkgRiTnVNJOaspyj_gSESteILDwK2m6ZLY34qxe6DlLSyduoOJRrLyHdGxO6i5NEOQ1UWReXD3IPrtOU8EU9-lbnBF8M4AsdR"))! )
+        }
+        
+//        let url = URL(string: fullURL )
+        var dataImg = Data()
+        for url in urls {
+                
+                let dataTask = URLSession.shared.dataTask(with: url) { data,response,_ in
+                    if let data = data {
+                        dataImg = data
+                    }
+                    else {
+                        
+                    }
+                }
+                dataTask.resume()
+            
+        }
+        return Future({ promise in
+            promise(.success(dataImg))
+        })
+        
+    }
+    
     func more() {
         if !isLoading {
             isLoading = true
-            OpenDota.shared.get(.matches,params: ["limit":20,"offset":matches.value.count],withType: [Match].self).sink(receiveCompletion: {_ in }, receiveValue: { value in
-                self.matches.value += value
-                self.isLoading = false
+            OpenDota.shared.get(.matches,params: ["limit":20,"offset":matches.value.count],withType: [Match].self).sink(receiveCompletion: {_ in }, receiveValue: {[weak self] value in
+                self!.matches.value += value
+                self!.isLoading = false
             }).store(in: &subscription)
         }
     }
@@ -114,16 +143,7 @@ class Dota {
 
 
 
-struct HeroesStat : Codable, Hashable {
-    var hero_id : String?
-    var last_played : Int?
-    var games : Int?
-    var win : Int?
-    var with_games : Int?
-    var with_win : Int?
-    var against_games : Int?
-    var against_win : Int?
-}
+
 
 
 
@@ -139,17 +159,6 @@ struct Hero : Codable {
 
 
 
-struct MatchDetail : Codable {
-    var players : [Player]
-}
-
-struct Player : Codable {
-    var personaname : String?
-    var player_slot : Int?
-    var kills : Int?
-    var deaths : Int?
-    var assits : Int?
-}
 
 
 

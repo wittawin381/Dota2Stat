@@ -21,7 +21,7 @@ class RecordInteractor : RecordBuisinessLogic, RecordDataStore {
     var subscription = Set<AnyCancellable>()
     
     func fetch(request: Record.Cell.Request) {
-        OpenDota.shared.get(.record, withType: [Records].self).sink(receiveCompletion: {_ in}, receiveValue: { value in
+        OpenDota.shared.get(.record, withType: [Records].self).sink(receiveCompletion: {_ in}, receiveValue: {[unowned self] value in
             self.presenter?.presentItem(response: Record.Cell.Response(items: value))
         }).store(in: &subscription)
     }

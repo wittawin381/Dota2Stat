@@ -21,15 +21,16 @@ class ViewController: UIViewController , Storyboarded, HomeViewLogic{
     var heroesStat = [DisplayItems]()
     weak var coordinator: HomeCoordinator?
     @IBOutlet weak var listTable: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var activityView: UIView!
     let search = UISearchController()
-//    var viewModel : HomeVM!
     var subscription = Set<AnyCancellable>()
     private lazy var dataSource = makeDataSource()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-                
+        activityIndicator.startAnimating()
         interactor?.fetch(request: Home.TableViewCell.Request())
         listTable.delegate = self
         listTable.dataSource = dataSource
@@ -54,12 +55,13 @@ extension ViewController : UITableViewDelegate {
     func makeDataSource() -> UITableViewDiffableDataSource<Home.HomeSection, AnyHashable> {
         return UITableViewDiffableDataSource(
             tableView: listTable,
-            cellProvider: { tableView, indexPath, item in
+            cellProvider: {[unowned self] tableView, indexPath, item in
                 if item is Home.TableViewCell.ViewModel.MatchCell {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "listItemCell", for: indexPath) as! FixtureTableViewCell
                     let match = self.matches[indexPath.row] as! Home.TableViewCell.ViewModel.MatchCell
                     cell.heroImg.image = UIImage(named: match.heroImg)
                     cell.result.text = match.result
+                    cell.result.textColor = cell.result.text == "Won" ? .systemGreen : .red
                     cell.bracket.text = match.bracket
                     cell.gameMode.text = match.gameMode
                     cell.kda.text = match.kda
@@ -80,14 +82,35 @@ extension ViewController : UITableViewDelegate {
         );
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = UIView()
+        switch section {
+        case 0 :
+            let header = HeaderView(title: "Recent Matches",section: section)
+            header.delegate = self
+            return header
+        case 1:
+            let header = HeaderView(title: "Hero Stat",section: section)
+            header.delegate = self
+            return header
+        default:
+            return header
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 60
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            let matchID = (matches[indexPath.row] as! Home.TableViewCell.ViewModel.MatchCell).matchID
+            router?.routeToGame(matchID: matchID)
+        default:
+            return
+        }
         tableView.deselectRow(at: indexPath, animated: true)
-        if (indexPath.section == 0) {
-            router?.routeToAllGames()
-        }
-        else {
-            router?.routeToHeroStat()
-        }
     }
     
     func update(animate : Bool) {
@@ -101,7 +124,10 @@ extension ViewController : UITableViewDelegate {
     func displayFetched(viewModel: Home.TableViewCell.ViewModel) {
         matches = viewModel.matches
         heroesStat = viewModel.stats
-        update(animate: true)
+        update(animate: false)
+        activityIndicator.stopAnimating()
+        activityIndicator.isHidden = true
+        activityView.isHidden = true
     }
     
     func setup() {
@@ -118,4 +144,17 @@ extension ViewController : UITableViewDelegate {
     }
 }
 
+extension ViewController : HeaderViewDelegate {
+    func headerViewDidSelect(section: Int) {
+        switch section {
+        case 0:
+            router?.routeToAllGames()
+        case 1:
+            router?.routeToHeroStat()
+        default:
+            return
+        }
+        
+    }
+}
 

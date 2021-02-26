@@ -30,6 +30,16 @@
 		2552ADEC25E74EE600CC9C91 /* AllGamesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2552ADEB25E74EE600CC9C91 /* AllGamesInteractor.swift */; };
 		2552ADF125E74F1C00CC9C91 /* AllGamesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2552ADF025E74F1C00CC9C91 /* AllGamesPresenter.swift */; };
 		2552ADFC25E7777800CC9C91 /* AllGamesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2552ADFB25E7777800CC9C91 /* AllGamesRouter.swift */; };
+		2552AE0C25E7D9D800CC9C91 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2552AE0B25E7D9D800CC9C91 /* HeaderView.swift */; };
+		2552AE1125E8887100CC9C91 /* HeroStatInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2552AE1025E8887100CC9C91 /* HeroStatInteractor.swift */; };
+		2552AE1625E888AF00CC9C91 /* HeroStatPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2552AE1525E888AF00CC9C91 /* HeroStatPresenter.swift */; };
+		2552AE1E25E88A1200CC9C91 /* HeroStatRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2552AE1D25E88A1200CC9C91 /* HeroStatRouter.swift */; };
+		2552AE2725E8942100CC9C91 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2552AE2625E8942100CC9C91 /* GameView.swift */; };
+		2552AE2F25E8942D00CC9C91 /* GameInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2552AE2E25E8942D00CC9C91 /* GameInteractor.swift */; };
+		2552AE3425E8943700CC9C91 /* GamePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2552AE3325E8943700CC9C91 /* GamePresenter.swift */; };
+		2552AE3925E8944200CC9C91 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2552AE3825E8944200CC9C91 /* GameModel.swift */; };
+		2552AE3E25E8944C00CC9C91 /* GameRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2552AE3D25E8944C00CC9C91 /* GameRouter.swift */; };
+		2552AE4425E8A47D00CC9C91 /* StatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2552AE4325E8A47D00CC9C91 /* StatCell.swift */; };
 		2575E06025DA0CF700092C32 /* Heroes.json in Resources */ = {isa = PBXBuildFile; fileRef = 2575E05F25DA0CF700092C32 /* Heroes.json */; };
 		2575E06525DA142B00092C32 /* MyHeoresTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2575E06425DA142B00092C32 /* MyHeoresTableViewCell.swift */; };
 		258951CB25DC263100B36E68 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258951CA25DC263100B36E68 /* MainTabBarController.swift */; };
@@ -102,6 +112,16 @@
 		2552ADEB25E74EE600CC9C91 /* AllGamesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGamesInteractor.swift; sourceTree = "<group>"; };
 		2552ADF025E74F1C00CC9C91 /* AllGamesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGamesPresenter.swift; sourceTree = "<group>"; };
 		2552ADFB25E7777800CC9C91 /* AllGamesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGamesRouter.swift; sourceTree = "<group>"; };
+		2552AE0B25E7D9D800CC9C91 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		2552AE1025E8887100CC9C91 /* HeroStatInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroStatInteractor.swift; sourceTree = "<group>"; };
+		2552AE1525E888AF00CC9C91 /* HeroStatPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroStatPresenter.swift; sourceTree = "<group>"; };
+		2552AE1D25E88A1200CC9C91 /* HeroStatRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroStatRouter.swift; sourceTree = "<group>"; };
+		2552AE2625E8942100CC9C91 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		2552AE2E25E8942D00CC9C91 /* GameInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInteractor.swift; sourceTree = "<group>"; };
+		2552AE3325E8943700CC9C91 /* GamePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePresenter.swift; sourceTree = "<group>"; };
+		2552AE3825E8944200CC9C91 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
+		2552AE3D25E8944C00CC9C91 /* GameRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRouter.swift; sourceTree = "<group>"; };
+		2552AE4325E8A47D00CC9C91 /* StatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatCell.swift; sourceTree = "<group>"; };
 		2575E05F25DA0CF700092C32 /* Heroes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Heroes.json; sourceTree = "<group>"; };
 		2575E06425DA142B00092C32 /* MyHeoresTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHeoresTableViewCell.swift; sourceTree = "<group>"; };
 		258951CA25DC263100B36E68 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -186,6 +206,7 @@
 		2529800A253AB96200ECEE6E /* test2 */ = {
 			isa = PBXGroup;
 			children = (
+				2552AE2525E8940300CC9C91 /* GameDetail */,
 				258951CF25DC2A5B00B36E68 /* Record */,
 				25EAC9A725DBB8190036F4A8 /* HeroStat */,
 				25C9B21725DA96E400DD9500 /* AllMatches */,
@@ -250,6 +271,7 @@
 		2551492A25D8311D008D7436 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				2552AE0A25E7D9C000CC9C91 /* header */,
 				25FD899225E0296900B85E64 /* cell */,
 				2529800F253AB96200ECEE6E /* ViewController.swift */,
 				2552ADD625E730E200CC9C91 /* homeRouter.swift */,
@@ -259,6 +281,35 @@
 				2551491725D7F5D8008D7436 /* homeVM.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		2552AE0A25E7D9C000CC9C91 /* header */ = {
+			isa = PBXGroup;
+			children = (
+				2552AE0B25E7D9D800CC9C91 /* HeaderView.swift */,
+			);
+			path = header;
+			sourceTree = "<group>";
+		};
+		2552AE2525E8940300CC9C91 /* GameDetail */ = {
+			isa = PBXGroup;
+			children = (
+				2552AE4225E8A46700CC9C91 /* Cell */,
+				2552AE2625E8942100CC9C91 /* GameView.swift */,
+				2552AE2E25E8942D00CC9C91 /* GameInteractor.swift */,
+				2552AE3325E8943700CC9C91 /* GamePresenter.swift */,
+				2552AE3825E8944200CC9C91 /* GameModel.swift */,
+				2552AE3D25E8944C00CC9C91 /* GameRouter.swift */,
+			);
+			path = GameDetail;
+			sourceTree = "<group>";
+		};
+		2552AE4225E8A46700CC9C91 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				2552AE4325E8A47D00CC9C91 /* StatCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		258951CF25DC2A5B00B36E68 /* Record */ = {
@@ -299,8 +350,11 @@
 			isa = PBXGroup;
 			children = (
 				25EAC9AB25DBB8340036F4A8 /* HeroStatView.swift */,
-				25EAC9B025DBB94E0036F4A8 /* HeroStatVM.swift */,
+				2552AE1025E8887100CC9C91 /* HeroStatInteractor.swift */,
+				2552AE1525E888AF00CC9C91 /* HeroStatPresenter.swift */,
 				25EAC9B525DBBB470036F4A8 /* HeroStatModel.swift */,
+				2552AE1D25E88A1200CC9C91 /* HeroStatRouter.swift */,
+				25EAC9B025DBB94E0036F4A8 /* HeroStatVM.swift */,
 			);
 			path = HeroStat;
 			sourceTree = "<group>";
@@ -579,9 +633,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2552AE1E25E88A1200CC9C91 /* HeroStatRouter.swift in Sources */,
 				2552ADFC25E7777800CC9C91 /* AllGamesRouter.swift in Sources */,
+				2552AE3E25E8944C00CC9C91 /* GameRouter.swift in Sources */,
+				2552AE1625E888AF00CC9C91 /* HeroStatPresenter.swift in Sources */,
 				2551491D25D7F616008D7436 /* homeModel.swift in Sources */,
 				25298016253AB96200ECEE6E /* test2.xcdatamodeld in Sources */,
+				2552AE3925E8944200CC9C91 /* GameModel.swift in Sources */,
 				258951CB25DC263100B36E68 /* MainTabBarController.swift in Sources */,
 				25C9B22625DB542F00DD9500 /* Coordinator.swift in Sources */,
 				2552ADF125E74F1C00CC9C91 /* AllGamesPresenter.swift in Sources */,
@@ -599,9 +657,12 @@
 				258951D125DC2A7200B36E68 /* RecordView.swift in Sources */,
 				2575E06525DA142B00092C32 /* MyHeoresTableViewCell.swift in Sources */,
 				25EAC9AC25DBB8340036F4A8 /* HeroStatView.swift in Sources */,
+				2552AE0C25E7D9D800CC9C91 /* HeaderView.swift in Sources */,
 				25FD899425E0298A00B85E64 /* MyHeroesCellVM.swift in Sources */,
 				25298010253AB96200ECEE6E /* ViewController.swift in Sources */,
 				2552ADEC25E74EE600CC9C91 /* AllGamesInteractor.swift in Sources */,
+				2552AE3425E8943700CC9C91 /* GamePresenter.swift in Sources */,
+				2552AE1125E8887100CC9C91 /* HeroStatInteractor.swift in Sources */,
 				25C9B21925DA970600DD9500 /* AllGamesView.swift in Sources */,
 				25FD899E25E4193E00B85E64 /* homePresenter.swift in Sources */,
 				25C9B23325DB638E00DD9500 /* Dota2.swift in Sources */,
@@ -609,9 +670,12 @@
 				253AD51E25D939DE0044C5C0 /* MatcheesHeaderCell.swift in Sources */,
 				2529800C253AB96200ECEE6E /* AppDelegate.swift in Sources */,
 				2552ADE125E73BF700CC9C91 /* RecordPresenter.swift in Sources */,
+				2552AE4425E8A47D00CC9C91 /* StatCell.swift in Sources */,
 				258951DB25DC2BB400B36E68 /* RecordModel.swift in Sources */,
 				25FD899925E4193400B85E64 /* homeInteractor.swift in Sources */,
+				2552AE2F25E8942D00CC9C91 /* GameInteractor.swift in Sources */,
 				2529800E253AB96200ECEE6E /* SceneDelegate.swift in Sources */,
+				2552AE2725E8942100CC9C91 /* GameView.swift in Sources */,
 				25C9B22B25DB556700DD9500 /* Storyboarded.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

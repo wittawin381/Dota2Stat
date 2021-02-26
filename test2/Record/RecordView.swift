@@ -24,12 +24,14 @@ class RecordView : UIViewController, Storyboarded, RecordViewLogic {
     private lazy var dataSource = makeDataSource()
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     private var marginLeft : CGFloat!
     private var marginRight : CGFloat!
     override func viewDidLoad() {
         interactor?.fetch(request: Record.Cell.Request())
         collectionView.delegate = self
         collectionView.dataSource = dataSource
+        activityIndicator.startAnimating()
         let layout = UICollectionViewFlowLayout()
         layout.minimumInteritemSpacing = 20
         layout.minimumLineSpacing = 20
@@ -63,7 +65,7 @@ extension RecordView : UICollectionViewDelegate, UICollectionViewDelegateFlowLay
     func makeDataSource() -> UICollectionViewDiffableDataSource<Record.RecordSection,AnyHashable> {
         return UICollectionViewDiffableDataSource(
             collectionView: collectionView,
-            cellProvider: { collectionView, indexPath, item in
+            cellProvider: {[unowned self] collectionView, indexPath, item in
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecordCell", for: indexPath) as! RecordCollectionViewCell
                 cell.contentView.layer.cornerRadius = 15
                 cell.contentView.layer.borderWidth = 0.5
@@ -84,6 +86,8 @@ extension RecordView : UICollectionViewDelegate, UICollectionViewDelegateFlowLay
     func displayRecord(viewModel: Record.Cell.ViewModel) {
         records = viewModel.items
         update(animate: true)
+        activityIndicator.stopAnimating()
+        activityIndicator.isHidden = true
     }
     
     func setup() {

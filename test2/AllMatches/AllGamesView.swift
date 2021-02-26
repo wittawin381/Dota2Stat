@@ -34,6 +34,8 @@ class AllGamesView : UIViewController, Storyboarded, AllGamesViewLogic{
         interactor?.showItems(request: AllGames.Cell.Request())
     }
     
+    
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nil)
         setup()
@@ -63,8 +65,7 @@ class AllGamesView : UIViewController, Storyboarded, AllGamesViewLogic{
     
     func displayItem(viewModel: AllGames.Cell.ViewModel) {
         games = viewModel.items
-        print("DISPLAY")
-        update(animate: true)
+        update(animate: false)
     }
     
 }
@@ -73,7 +74,7 @@ extension AllGamesView : UITableViewDelegate {
     func makeDataSource() ->  UITableViewDiffableDataSource<AllGames.GameSection, AnyHashable> {
         return UITableViewDiffableDataSource(
             tableView: listTable,
-            cellProvider: { tableView, indexPath, item in
+            cellProvider: {[unowned self] tableView, indexPath, item in
                 let cell = tableView.dequeueReusableCell(withIdentifier: "listItemCell", for: indexPath) as! FixtureTableViewCell
                 let match = self.games[indexPath.row]
                 cell.heroImg.image = UIImage(named: match.heroImg)

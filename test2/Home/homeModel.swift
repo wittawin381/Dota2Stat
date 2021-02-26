@@ -50,6 +50,7 @@ enum Home {
         }
         struct ViewModel {
             struct MatchCell : DisplayItems, Hashable{
+                var matchID : String
                 var heroImg : String
                 var result : String
                 var bracket : String

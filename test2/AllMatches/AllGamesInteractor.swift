@@ -26,7 +26,7 @@ class AllGamesInteractor : AllGamesBusinessLogic, AllGamesDataStore{
     func fetchMore(request: AllGames.Cell.Request) {
         if !isLoading {
             isLoading = true
-            OpenDota.shared.get(.matches,params: ["limit":20,"offset":games.count],withType: [Match].self).sink(receiveCompletion: {_ in }, receiveValue: { value in
+            OpenDota.shared.get(.matches,params: ["limit":20,"offset":games.count],withType: [Match].self).sink(receiveCompletion: {_ in }, receiveValue: {[unowned self] value in
                 self.games += value
                 self.isLoading = false
                 self.presenter?.presentMoreItems(response: AllGames.Cell.Response(items: value))
@@ -35,7 +35,6 @@ class AllGamesInteractor : AllGamesBusinessLogic, AllGamesDataStore{
     }
     
     func showItems(request: AllGames.Cell.Request) {
-        print("Interactor")
         presenter!.presentItems(response: AllGames.Cell.Response(items: games) )
     }
 }
