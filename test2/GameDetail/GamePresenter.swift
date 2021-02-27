@@ -55,8 +55,8 @@ class GamePresenter : GamePresentLogic {
         viewController?.initGame(viewModel: Game.Init.ViewModel(matchID: response.matchID))
     }
     
-    func getImageURL(id : Int) -> URL? {
+    func getImageURL(id : Int) -> NSURL? {
         let imageURL = Dota.shared.items.first(where: {$0.value.id == id})?.value.img ?? "/Not found"
-        return URL(string: "https://api.opendota.com" + imageURL)
+        return NSURL(string: "https://api.opendota.com" + imageURL)
     }
 }

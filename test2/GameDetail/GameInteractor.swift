@@ -11,7 +11,6 @@ import Combine
 protocol GameBusinessLogic {
     func fetchGame(request: Game.Cell.Request)
     func initGame(request: Game.Init.Request)
-    func fetchItemImg(url: URL, completionHandler: @escaping (Data)->Void)
 }
 
 protocol GameDataStore {
@@ -21,9 +20,9 @@ protocol GameDataStore {
 
 class GameInteractor : GameBusinessLogic, GameDataStore {
     var presenter : GamePresentLogic?
-    var subscription = Set<AnyCancellable>()
-    var games: MatchDetail?
-    var match_id: String!
+    private var subscription = Set<AnyCancellable>()
+    internal var games: MatchDetail?
+    internal var match_id: String!
     
 
     
@@ -33,17 +32,8 @@ class GameInteractor : GameBusinessLogic, GameDataStore {
             self.presenter?.presentGame(response: Game.Cell.Response(game: game))
         }).store(in: &subscription)
     }
+        
     
-    func fetchItemImg(url: URL, completionHandler: @escaping (Data)->Void) {
-        let dataTask = URLSession.shared.dataTask(with: url) { data,response,error in
-            if let data = data {
-                DispatchQueue.main.async {
-                    completionHandler(data)
-                }
-            }
-        }
-        dataTask.resume()
-    }
     
     func initGame(request: Game.Init.Request) {
         presenter?.initGame(response: Game.Init.Response(matchID: match_id))

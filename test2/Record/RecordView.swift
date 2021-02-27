@@ -13,10 +13,9 @@ protocol RecordViewLogic : class {
     func displayRecord(viewModel: Record.Cell.ViewModel)
 }
 
-class RecordView : UIViewController, Storyboarded, RecordViewLogic {
+class RecordView : UIViewController, RecordViewLogic {
     
     
-    weak var coordinator : RecordCoordinator?
     var interactor : RecordBuisinessLogic?
     var viewModel : RecordVM!
     var subscription = Set<AnyCancellable>()

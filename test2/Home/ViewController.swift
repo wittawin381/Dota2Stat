@@ -14,12 +14,11 @@ protocol HomeViewLogic: class {
     func displayFetched(viewModel : Home.TableViewCell.ViewModel)
 }
 
-class ViewController: UIViewController , Storyboarded, HomeViewLogic{
+class ViewController: UIViewController , HomeViewLogic{
     var interactor : HomeInteractor?
     var router : (HomeRouterLogic & HomeRouterDataPassing)?
     var matches = [DisplayItems]()
     var heroesStat = [DisplayItems]()
-    weak var coordinator: HomeCoordinator?
     @IBOutlet weak var listTable: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var activityView: UIView!
@@ -59,7 +58,8 @@ extension ViewController : UITableViewDelegate {
                 if item is Home.TableViewCell.ViewModel.MatchCell {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "listItemCell", for: indexPath) as! FixtureTableViewCell
                     let match = self.matches[indexPath.row] as! Home.TableViewCell.ViewModel.MatchCell
-                    cell.heroImg.image = UIImage(named: match.heroImg)
+                    let image = ImageResize.shared.resized(image: UIImage(named: match.heroImg)!,scale: 0.2)
+                    cell.heroImg.image = image
                     cell.result.text = match.result
                     cell.result.textColor = cell.result.text == "Won" ? .systemGreen : .red
                     cell.bracket.text = match.bracket
@@ -70,7 +70,8 @@ extension ViewController : UITableViewDelegate {
                 else {
                     let cell = tableView.dequeueReusableCell(withIdentifier: "heroesCell", for: indexPath) as! MyHeoresTableViewCell
                     let stat = self.heroesStat[indexPath.row] as! Home.TableViewCell.ViewModel.HeroStatCell
-                    cell.heroImg.image = UIImage(named: stat.heroImg)
+                    let image = ImageResize.shared.resized(image: UIImage(named: stat.heroImg)!,scale: 0.2)
+                    cell.heroImg.image = image
                     cell.heroName.text = stat.heroName
                     cell.matchPlayed.text = stat.matchPlayed
                     cell.matchPlayProg.setProgress(stat.matchPlayProg, animated: true)

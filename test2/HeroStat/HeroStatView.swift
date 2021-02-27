@@ -13,9 +13,7 @@ protocol HeroStatViewLogic : class {
     func displayHeroStat(viewModel: HeroStat.Cell.ViewModel)
 }
 
-class HeroStatView : UIViewController, Storyboarded, HeroStatViewLogic {
-    weak var coordinator : HomeCoordinator?
-    var viewModel : HeroStatVM!
+class HeroStatView : UIViewController, HeroStatViewLogic {
     var interactor : HeroStatBusinessLogic?
     var router : (HeroStatRouterLogic & HeroStatPassingData)?
     var subscription = Set<AnyCancellable>()
@@ -37,6 +35,7 @@ class HeroStatView : UIViewController, Storyboarded, HeroStatViewLogic {
         super.init(coder: coder)
         setup()
     }
+    
     
     func setup() {
         let viewController = self
@@ -65,7 +64,8 @@ extension HeroStatView : UITableViewDelegate {
             cellProvider: {[unowned self] tableView, indexPath, item in
                 let cell = tableView.dequeueReusableCell(withIdentifier: "heroesCell", for: indexPath) as! MyHeoresTableViewCell
                 let stat = self.stats[indexPath.row]
-                cell.heroImg.image = UIImage(named: stat.heroImg)
+                let image = ImageResize.shared.resized(image: UIImage(named: stat.heroImg)!,scale: 0.2)
+                cell.heroImg.image = image
                 cell.heroName.text = stat.heroName
                 cell.matchPlayed.text = stat.matchPlayed
                 cell.winrate.text = stat.winrate

@@ -23,6 +23,7 @@ enum AllGames {
         }
         struct ViewModel {
             struct Item : Hashable {
+                var matchID : String
                 var heroImg : String
                 var result : String
                 var bracket : String

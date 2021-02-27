@@ -22,4 +22,5 @@ class HeroStatInteractor : HeroStatBusinessLogic, HeroStatDataStore {
     func displayItems(request: HeroStat.Cell.Request) {
         presenter?.presentItems(response: HeroStat.Cell.Response(stats: stats))
     }
+    
 }

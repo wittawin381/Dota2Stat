@@ -49,7 +49,7 @@ enum Game {
                 var playerName : String
                 var kda : String
                 var kdaPercent : String
-                var items: [URL?]
+                var items: [NSURL?]
             }
             var dire : [Stat]
             var radiant : [Stat]

@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import UIKit
 
 protocol AllGamesRouterLogic {
-    
+    func routeToGame(matchID: String)
 }
 
 protocol AllGamesDataPassing {
@@ -19,5 +20,19 @@ protocol AllGamesDataPassing {
 class AllGamesRouter : AllGamesDataPassing, AllGamesRouterLogic {
     var dataStore: AllGamesDataStore?
     weak var viewController : AllGamesView?
+    
+    func routeToGame(matchID: String) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "GameView") as! GameView
+        passDataToGame(source: dataStore!, destination: &(vc.router!.dataStore!), matchID: matchID)
+        navigateTo(source: viewController!, destination: vc)
+    }
+    
+    func navigateTo(source : AllGamesView, destination : UIViewController) {
+        source.navigationController?.pushViewController(destination, animated: true)
+    }
+    
+    func passDataToGame(source : AllGamesDataStore, destination : inout GameDataStore, matchID: String) {
+        destination.match_id = matchID
+    }
     
 }

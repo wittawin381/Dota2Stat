@@ -14,13 +14,11 @@ protocol AllGamesViewLogic : class {
     func displayFetchedItem(viewModel : AllGames.Cell.ViewModel)
 }
 
-class AllGamesView : UIViewController, Storyboarded, AllGamesViewLogic{
+class AllGamesView : UIViewController, AllGamesViewLogic{
     
     
-    weak var coordinator : HomeCoordinator?
     var interactor : AllGamesBusinessLogic?
     var subscription = Set<AnyCancellable>()
-    var viewModel : AllGamesVM!
     var games = [AllGames.Cell.ViewModel.Item]()
     var router : (AllGamesRouterLogic & AllGamesDataPassing)?
     lazy var dataSource = makeDataSource()
@@ -77,7 +75,8 @@ extension AllGamesView : UITableViewDelegate {
             cellProvider: {[unowned self] tableView, indexPath, item in
                 let cell = tableView.dequeueReusableCell(withIdentifier: "listItemCell", for: indexPath) as! FixtureTableViewCell
                 let match = self.games[indexPath.row]
-                cell.heroImg.image = UIImage(named: match.heroImg)
+                let image = ImageResize.shared.resized(image: UIImage(named: match.heroImg)!,scale: 0.2)
+                cell.heroImg.image = image
                 cell.result.text = match.result
                 cell.result.textColor = cell.result.text == "Won" ? .systemGreen : .red
                 cell.bracket.text = match.bracket
@@ -94,19 +93,22 @@ extension AllGamesView : UITableViewDelegate {
         dataSource.apply(snapshot,animatingDifferences: animate)
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let matchID = games[indexPath.row].matchID
+        router?.routeToGame(matchID: matchID)
+    }
 }
 
 extension AllGamesView : UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = listTable.contentSize.height
-        if offsetY > contentHeight - 100 - listTable.frame.height {
+        if offsetY > contentHeight + 100 - listTable.frame.height {
             guard !interactor!.isLoading else {
-                print("LOADDDDed")
                 return
             }
             interactor?.fetchMore(request: AllGames.Cell.Request())
-//            viewModel.loadMoreData()
             update(animate: true)
         }
     }

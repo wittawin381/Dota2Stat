@@ -35,6 +35,7 @@ class AllGamesPresenter : AllGamesPresentLogic {
             let hero = Dota.shared.heroes.first(where: {$0.id == Int(match.hero_id ?? 99)}) ?? Dota.shared.heroes[91]
             let heroname = (hero.name ?? "").lowercased().replacingOccurrences(of: "npc_dota_hero_", with: "")
             presentItem.append(AllGames.Cell.ViewModel.Item(
+                            matchID: String(item.match_id!),
                             heroImg: heroname + "_full",
                             result: ( a && b || !a && !b ) ? "Won" : "Lost",
                             bracket: Dota.lobbyType[match.lobby_type ?? 0]!,

@@ -16,12 +16,14 @@ protocol AllGamesBusinessLogic {
 
 protocol AllGamesDataStore {
     var games : [Match] { get set }
+    var matchID : String! { get set }
 }
 
 class AllGamesInteractor : AllGamesBusinessLogic, AllGamesDataStore{
     var games: [Match] = [Match]()
     var presenter : AllGamesPresentLogic?
     var isLoading = false
+    var matchID: String!
     var subscription = Set<AnyCancellable>()
     func fetchMore(request: AllGames.Cell.Request) {
         if !isLoading {

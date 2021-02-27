@@ -40,6 +40,7 @@ class GameView : UIViewController, GameViewLogic {
         title = "Match ID \(matchID ?? "No matchID")"
     }
     
+    
         
     func setup () {
         let viewController = self
@@ -83,16 +84,20 @@ extension GameView : UITableViewDelegate {
                 default:
                     player = self.dire[indexPath.row]
                 }
-                cell.heroImg.image = UIImage(named: player.heroImg)
+                let image = ImageResize.shared.resized(image: UIImage(named: player.heroImg)!,scale: 0.2)
+                cell.heroImg.image = image
                 cell.playerName.text = player.playerName
                 cell.kda.text = player.kda
                 for i in 0...5 {
+                    cell.itemsImg[i].contentMode = .scaleAspectFill
+                    cell.itemsImg[i].layer.cornerRadius = 3
                     if player.items[i] != nil {
-                        self.interactor?.fetchItemImg(url:player.items[i]!) { imageData in
-                            cell.itemsImg[i].image = UIImage(data: imageData)
-                            cell.itemsImg[i].contentMode = .scaleAspectFill
-                            cell.itemsImg[i].layer.cornerRadius = 3
+                        ImageCache.shared.fetchItemImg(url: player.items[i]) { image in
+                            cell.itemsImg[i].image = image
                         }
+                    }
+                    else {
+                        cell.itemsImg[i].backgroundColor = .systemGray5
                     }
                 }
                 return cell
