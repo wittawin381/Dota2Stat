@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import UIKit
 
 protocol GameRouterLogic {
-    
+    func presentDetailModal()
 }
 
 protocol GameDataPassing {
@@ -16,7 +17,21 @@ protocol GameDataPassing {
 }
 
 class GameRouter : GameRouterLogic, GameDataPassing {
-    weak var viewController : GameViewLogic?
+    weak var viewController : GameView?
     var dataStore: GameDataStore?
 
+    func presentDetailModal() {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "DetailModalView") as! DetailModalView
+        passData(source: dataStore!, destination: &(vc.router!.dataStore!))
+        navigate(source: viewController!, destination: vc)
+    }
+    
+    func navigate(source : UIViewController, destination : UIViewController) {
+        source.navigationController?.present(destination, animated: true, completion: {})
+    }
+    
+    func passData(source : GameDataStore, destination : inout DetailDataStore) {
+        let selectedRow = viewController?.tableView.indexPathForSelectedRow?.row
+        destination.detail = source.games?.players[selectedRow!]
+    }
 }

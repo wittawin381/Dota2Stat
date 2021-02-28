@@ -16,6 +16,8 @@ class Dota {
     var heroesStat = CurrentValueSubject<[HeroesStat],AFError>([])
     var record = CurrentValueSubject<[Record],AFError>([])
     var items = [String:Item]()
+    var ability_ids = [String: String]()
+    var abilities = [String: Ability]()
     var subscription = Set<AnyCancellable>()
     var isLoading : Bool = false
     private init() {
@@ -38,7 +40,9 @@ class Dota {
         
         heroes = jsonParse(from: "Heroes.json", type: [Hero].self)
         items = jsonParse(from: "Items.json", type: [String : Item].self)
-//        print(items.first(where: {$0.value.id == 303})?.value.img)
+        ability_ids = jsonParse(from: "abilityids.json", type: [String : String].self)
+        abilities = jsonParse(from: "abilities.json", type: [String: Ability].self)
+        //        print(items.first(where: {$0.value.id == 303})?.value.img)
     }
     
     private func jsonParse<T:Codable>(from path : String, type : T.Type) -> T{
@@ -47,6 +51,7 @@ class Dota {
         if let file = Bundle.main.path(forResource: String(name[0]), ofType: String(name[1])) {
             do {
                 let content = try String(contentsOfFile: file)
+                
                 data = try! JSONDecoder().decode(type, from: content.data(using: .utf8)!)
             }
             catch {
@@ -66,7 +71,6 @@ class Dota {
             urls.append((URL(string: fullURL) ?? URL(string: "https://lh3.googleusercontent.com/proxy/K7N6O3yIk1XVUboqaWg2RxlEMaJKXeAyRNDGkgRiTnVNJOaspyj_gSESteILDwK2m6ZLY34qxe6DlLSyduoOJRrLyHdGxO6i5NEOQ1UWReXD3IPrtOU8EU9-lbnBF8M4AsdR"))! )
         }
         
-//        let url = URL(string: fullURL )
         var dataImg = Data()
         for url in urls {
                 
@@ -86,15 +90,33 @@ class Dota {
         })
         
     }
+        
+    func getHeroImage(id: Int?) -> String {
+        let heroname = getHeroLocalName(id: id)
+        return heroname + "_full"
+    }
     
-    func more() {
-        if !isLoading {
-            isLoading = true
-            OpenDota.shared.get(.matches,params: ["limit":20,"offset":matches.value.count],withType: [Match].self).sink(receiveCompletion: {_ in }, receiveValue: {[weak self] value in
-                self!.matches.value += value
-                self!.isLoading = false
-            }).store(in: &subscription)
-        }
+    func getHeroLocalName(id: Int?) -> String{
+        let hero = Dota.shared.heroes.first(where: {$0.id == Int(id ?? 99)}) ?? Dota.shared.heroes[91]
+        let heroname = (hero.name ?? "").lowercased().replacingOccurrences(of: "npc_dota_hero_", with: "")
+        return heroname
+
+    }
+    
+    func getHeroName(id: Int?) -> String {
+        let hero = Dota.shared.heroes.first(where: {$0.id == Int(id ?? 99)}) ?? Dota.shared.heroes[91]
+        return hero.localized_name!
+    }
+    
+    func getKDA(kills: Int?,deaths: Int?, assists: Int?) -> String{
+        let kda = String(kills ?? 0) + " / " + String(deaths ?? 0) + " / " + String(assists ?? 0)
+        return kda
+    }
+    
+    func getAbilityImage(id: Int) -> String? {
+        let abilityName = ability_ids[String(id)]
+        let abilityImage = abilities[abilityName!]?.img
+        return abilityImage 
     }
     
     static let lobbyType : [Int:String] = [
@@ -164,5 +186,9 @@ struct Hero : Codable {
 
 struct Item : Codable {
     var id : Int?
+    var img : String?
+}
+
+struct Ability : Codable {
     var img : String?
 }

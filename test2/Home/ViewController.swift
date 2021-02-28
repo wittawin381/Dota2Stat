@@ -106,8 +106,7 @@ extension ViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
-            let matchID = (matches[indexPath.row] as! Home.TableViewCell.ViewModel.MatchCell).matchID
-            router?.routeToGame(matchID: matchID)
+            router?.routeToGame()
         default:
             return
         }

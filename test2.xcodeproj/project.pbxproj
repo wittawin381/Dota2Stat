@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2502A94325E9EB0100919251 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2502A94225E9EB0100919251 /* ImageCache.swift */; };
 		2502A95525E9FB9100919251 /* ImageResize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2502A95425E9FB9100919251 /* ImageResize.swift */; };
+		2502A96125EA678700919251 /* PlayerStat.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2502A96025EA678700919251 /* PlayerStat.xib */; };
+		2502A96625EA914900919251 /* PlayerStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2502A96525EA914900919251 /* PlayerStatView.swift */; };
 		2529800C253AB96200ECEE6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2529800B253AB96200ECEE6E /* AppDelegate.swift */; };
 		2529800E253AB96200ECEE6E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2529800D253AB96200ECEE6E /* SceneDelegate.swift */; };
 		25298010253AB96200ECEE6E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2529800F253AB96200ECEE6E /* ViewController.swift */; };
@@ -47,6 +49,8 @@
 		2552AE5F25E9519500CC9C91 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2552AE5E25E9519500CC9C91 /* DetailPresenter.swift */; };
 		2552AE6425E951AB00CC9C91 /* DetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2552AE6325E951AB00CC9C91 /* DetailRouter.swift */; };
 		2552AE6925E951B800CC9C91 /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2552AE6825E951B800CC9C91 /* DetailModel.swift */; };
+		25624C2025EB7AE600CE36CF /* abilities.json in Resources */ = {isa = PBXBuildFile; fileRef = 25624C1F25EB7AE600CE36CF /* abilities.json */; };
+		25624C2525EB7B9B00CE36CF /* abilityids.json in Resources */ = {isa = PBXBuildFile; fileRef = 25624C2425EB7B9B00CE36CF /* abilityids.json */; };
 		2575E06025DA0CF700092C32 /* Heroes.json in Resources */ = {isa = PBXBuildFile; fileRef = 2575E05F25DA0CF700092C32 /* Heroes.json */; };
 		2575E06525DA142B00092C32 /* MyHeoresTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2575E06425DA142B00092C32 /* MyHeoresTableViewCell.swift */; };
 		258951CB25DC263100B36E68 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258951CA25DC263100B36E68 /* MainTabBarController.swift */; };
@@ -90,6 +94,8 @@
 /* Begin PBXFileReference section */
 		2502A94225E9EB0100919251 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		2502A95425E9FB9100919251 /* ImageResize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResize.swift; sourceTree = "<group>"; };
+		2502A96025EA678700919251 /* PlayerStat.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerStat.xib; sourceTree = "<group>"; };
+		2502A96525EA914900919251 /* PlayerStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStatView.swift; sourceTree = "<group>"; };
 		25298008253AB96200ECEE6E /* test2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2529800B253AB96200ECEE6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2529800D253AB96200ECEE6E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +140,8 @@
 		2552AE5E25E9519500CC9C91 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
 		2552AE6325E951AB00CC9C91 /* DetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRouter.swift; sourceTree = "<group>"; };
 		2552AE6825E951B800CC9C91 /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
+		25624C1F25EB7AE600CE36CF /* abilities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = abilities.json; path = ../../../../Documents/dota2/abilities.json; sourceTree = "<group>"; };
+		25624C2425EB7B9B00CE36CF /* abilityids.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = abilityids.json; path = ../../../../Documents/dota2/abilityids.json; sourceTree = "<group>"; };
 		2575E05F25DA0CF700092C32 /* Heroes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Heroes.json; sourceTree = "<group>"; };
 		2575E06425DA142B00092C32 /* MyHeoresTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHeoresTableViewCell.swift; sourceTree = "<group>"; };
 		258951CA25DC263100B36E68 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -198,6 +206,15 @@
 				2502A95425E9FB9100919251 /* ImageResize.swift */,
 			);
 			path = ImageManager;
+			sourceTree = "<group>";
+		};
+		2502A95F25EA675100919251 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2502A96025EA678700919251 /* PlayerStat.xib */,
+				2502A96525EA914900919251 /* PlayerStatView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		25297FFF253AB96200ECEE6E = {
@@ -273,6 +290,8 @@
 		253AD4FC25D905930044C5C0 /* data */ = {
 			isa = PBXGroup;
 			children = (
+				25624C2425EB7B9B00CE36CF /* abilityids.json */,
+				25624C1F25EB7AE600CE36CF /* abilities.json */,
 				253AD4FD25D905E40044C5C0 /* LobbyType.json */,
 				253AD50525D906170044C5C0 /* GameMode.json */,
 				2575E05F25DA0CF700092C32 /* Heroes.json */,
@@ -336,6 +355,7 @@
 		2552AE5025E9513400CC9C91 /* Modal */ = {
 			isa = PBXGroup;
 			children = (
+				2502A95F25EA675100919251 /* Views */,
 				2552AE5125E9514B00CC9C91 /* DetailModalView.swift */,
 				2552AE5925E9515A00CC9C91 /* DetailInteractor.swift */,
 				2552AE5E25E9519500CC9C91 /* DetailPresenter.swift */,
@@ -530,9 +550,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2502A96125EA678700919251 /* PlayerStat.xib in Resources */,
 				253AD4FE25D905E40044C5C0 /* LobbyType.json in Resources */,
+				25624C2025EB7AE600CE36CF /* abilities.json in Resources */,
 				2529801B253AB96400ECEE6E /* LaunchScreen.storyboard in Resources */,
 				25298018253AB96400ECEE6E /* Assets.xcassets in Resources */,
+				25624C2525EB7B9B00CE36CF /* abilityids.json in Resources */,
 				253AD50625D906170044C5C0 /* GameMode.json in Resources */,
 				25298013253AB96200ECEE6E /* Main.storyboard in Resources */,
 				253B9ED325DF5315007CCA7F /* Items.json in Resources */,
@@ -687,6 +710,7 @@
 				258951EC25DD424A00B36E68 /* RecordCollectionViewCell.swift in Sources */,
 				2552AE5A25E9515A00CC9C91 /* DetailInteractor.swift in Sources */,
 				2551492325D82DE8008D7436 /* OpenDota.swift in Sources */,
+				2502A96625EA914900919251 /* PlayerStatView.swift in Sources */,
 				258951D125DC2A7200B36E68 /* RecordView.swift in Sources */,
 				2575E06525DA142B00092C32 /* MyHeoresTableViewCell.swift in Sources */,
 				25EAC9AC25DBB8340036F4A8 /* HeroStatView.swift in Sources */,

@@ -113,6 +113,13 @@ extension GameView : UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        switch indexPath.section {
+        case 2:
+            return
+        default:
+            router?.presentDetailModal()
+        }
         tableView.deselectRow(at: indexPath, animated: true)
     }
     

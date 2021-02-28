@@ -25,6 +25,16 @@ struct Player : Codable {
     var item_3 : Int?
     var item_4 : Int?
     var item_5 : Int?
+    var backpack_0 : Int?
+    var backpack_1 : Int?
+    var backpack_2 : Int?
+    var gold_per_min : Int?
+    var xp_per_min : Int?
+    var level : Int?
+    var tower_damage : Int?
+    var last_hits : Int?
+    var denies : Int?
+    var ability_upgrades_arr : [Int?]
 }
 
 
