@@ -73,7 +73,7 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="390" id="8yy-xF-1oC"/>
+                        <constraint firstAttribute="height" priority="250" constant="390" id="8yy-xF-1oC"/>
                         <constraint firstItem="pfR-cY-Euk" firstAttribute="leading" secondItem="H6n-qu-4nq" secondAttribute="leading" constant="24" id="QW5-7T-4sC"/>
                         <constraint firstItem="pfR-cY-Euk" firstAttribute="centerY" secondItem="H6n-qu-4nq" secondAttribute="centerY" id="nHI-27-UUa"/>
                     </constraints>

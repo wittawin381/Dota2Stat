@@ -60,13 +60,13 @@ class DetailModalView : UIViewController, DetailModalViewLogic {
     func initPageView() {
         //scrollView.contentSize = CGSize(width: view.frame.width * 2, height: scrollView.frame.height)
         stackView.distribution = .fillEqually
-        let playerStatView = PlayerStatView(frame: CGRect(x:0 , y: 0, width: stackView.frame.width, height: 390))
-        let playerStatView2 = PlayerStatView(frame: CGRect(x:0, y: 0, width: stackView.frame.width, height: 390))
+        let playerStatView = PlayerStatView(frame: CGRect(x:0 , y: 0, width: stackView.frame.width, height: stackView.frame.size.height))
+        let playerStatView2 = PlayerStatView(frame: CGRect(x:0, y: 0, width: stackView.frame.width, height: stackView.frame.size.height))
         stackView.addArrangedSubview(playerStatView)
         stackView.addArrangedSubview(playerStatView2)
         NSLayoutConstraint.activate([
             playerStatView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-          
+//            playerStatView.heightAnchor.constraint(equalTo: scrollView.heightAnchor)
         ])
     }
     
