@@ -116,7 +116,10 @@ class Dota {
     func getAbilityImage(id: Int) -> String? {
         let abilityName = ability_ids[String(id)]
         let abilityImage = abilities[abilityName!]?.img
-        return abilityImage 
+        if abilityImage == nil {
+            return nil
+        }
+        return "https://api.opendota.com" + (abilityImage ?? "")
     }
     
     static let lobbyType : [Int:String] = [

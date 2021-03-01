@@ -51,6 +51,10 @@
 		2552AE6925E951B800CC9C91 /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2552AE6825E951B800CC9C91 /* DetailModel.swift */; };
 		25624C2025EB7AE600CE36CF /* abilities.json in Resources */ = {isa = PBXBuildFile; fileRef = 25624C1F25EB7AE600CE36CF /* abilities.json */; };
 		25624C2525EB7B9B00CE36CF /* abilityids.json in Resources */ = {isa = PBXBuildFile; fileRef = 25624C2425EB7B9B00CE36CF /* abilityids.json */; };
+		25624C3825EC841900CE36CF /* SkillUpgrade.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25624C3725EC841900CE36CF /* SkillUpgrade.xib */; };
+		25624C3D25EC843200CE36CF /* SkillsUpgradeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25624C3C25EC843200CE36CF /* SkillsUpgradeView.swift */; };
+		25624C4325EC8B2B00CE36CF /* SkillsUpgradeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25624C4125EC8B2B00CE36CF /* SkillsUpgradeCollectionViewCell.swift */; };
+		25624C4425EC8B2B00CE36CF /* SkillsUpgradeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25624C4225EC8B2B00CE36CF /* SkillsUpgradeCollectionViewCell.xib */; };
 		2575E06025DA0CF700092C32 /* Heroes.json in Resources */ = {isa = PBXBuildFile; fileRef = 2575E05F25DA0CF700092C32 /* Heroes.json */; };
 		2575E06525DA142B00092C32 /* MyHeoresTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2575E06425DA142B00092C32 /* MyHeoresTableViewCell.swift */; };
 		258951CB25DC263100B36E68 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258951CA25DC263100B36E68 /* MainTabBarController.swift */; };
@@ -142,6 +146,10 @@
 		2552AE6825E951B800CC9C91 /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
 		25624C1F25EB7AE600CE36CF /* abilities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = abilities.json; path = ../../../../Documents/dota2/abilities.json; sourceTree = "<group>"; };
 		25624C2425EB7B9B00CE36CF /* abilityids.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = abilityids.json; path = ../../../../Documents/dota2/abilityids.json; sourceTree = "<group>"; };
+		25624C3725EC841900CE36CF /* SkillUpgrade.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SkillUpgrade.xib; sourceTree = "<group>"; };
+		25624C3C25EC843200CE36CF /* SkillsUpgradeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsUpgradeView.swift; sourceTree = "<group>"; };
+		25624C4125EC8B2B00CE36CF /* SkillsUpgradeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsUpgradeCollectionViewCell.swift; sourceTree = "<group>"; };
+		25624C4225EC8B2B00CE36CF /* SkillsUpgradeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SkillsUpgradeCollectionViewCell.xib; sourceTree = "<group>"; };
 		2575E05F25DA0CF700092C32 /* Heroes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Heroes.json; sourceTree = "<group>"; };
 		2575E06425DA142B00092C32 /* MyHeoresTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHeoresTableViewCell.swift; sourceTree = "<group>"; };
 		258951CA25DC263100B36E68 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -208,13 +216,13 @@
 			path = ImageManager;
 			sourceTree = "<group>";
 		};
-		2502A95F25EA675100919251 /* Views */ = {
+		2502A95F25EA675100919251 /* page1 */ = {
 			isa = PBXGroup;
 			children = (
 				2502A96025EA678700919251 /* PlayerStat.xib */,
 				2502A96525EA914900919251 /* PlayerStatView.swift */,
 			);
-			path = Views;
+			path = page1;
 			sourceTree = "<group>";
 		};
 		25297FFF253AB96200ECEE6E = {
@@ -355,7 +363,8 @@
 		2552AE5025E9513400CC9C91 /* Modal */ = {
 			isa = PBXGroup;
 			children = (
-				2502A95F25EA675100919251 /* Views */,
+				25624C3625EC83D400CE36CF /* page2 */,
+				2502A95F25EA675100919251 /* page1 */,
 				2552AE5125E9514B00CC9C91 /* DetailModalView.swift */,
 				2552AE5925E9515A00CC9C91 /* DetailInteractor.swift */,
 				2552AE5E25E9519500CC9C91 /* DetailPresenter.swift */,
@@ -363,6 +372,17 @@
 				2552AE6825E951B800CC9C91 /* DetailModel.swift */,
 			);
 			path = Modal;
+			sourceTree = "<group>";
+		};
+		25624C3625EC83D400CE36CF /* page2 */ = {
+			isa = PBXGroup;
+			children = (
+				25624C3725EC841900CE36CF /* SkillUpgrade.xib */,
+				25624C3C25EC843200CE36CF /* SkillsUpgradeView.swift */,
+				25624C4125EC8B2B00CE36CF /* SkillsUpgradeCollectionViewCell.swift */,
+				25624C4225EC8B2B00CE36CF /* SkillsUpgradeCollectionViewCell.xib */,
+			);
+			path = page2;
 			sourceTree = "<group>";
 		};
 		258951CF25DC2A5B00B36E68 /* Record */ = {
@@ -554,6 +574,8 @@
 				253AD4FE25D905E40044C5C0 /* LobbyType.json in Resources */,
 				25624C2025EB7AE600CE36CF /* abilities.json in Resources */,
 				2529801B253AB96400ECEE6E /* LaunchScreen.storyboard in Resources */,
+				25624C3825EC841900CE36CF /* SkillUpgrade.xib in Resources */,
+				25624C4425EC8B2B00CE36CF /* SkillsUpgradeCollectionViewCell.xib in Resources */,
 				25298018253AB96400ECEE6E /* Assets.xcassets in Resources */,
 				25624C2525EB7B9B00CE36CF /* abilityids.json in Resources */,
 				253AD50625D906170044C5C0 /* GameMode.json in Resources */,
@@ -696,6 +718,7 @@
 				2552AE3925E8944200CC9C91 /* GameModel.swift in Sources */,
 				258951CB25DC263100B36E68 /* MainTabBarController.swift in Sources */,
 				25C9B22625DB542F00DD9500 /* Coordinator.swift in Sources */,
+				25624C4325EC8B2B00CE36CF /* SkillsUpgradeCollectionViewCell.swift in Sources */,
 				2552ADF125E74F1C00CC9C91 /* AllGamesPresenter.swift in Sources */,
 				2502A94325E9EB0100919251 /* ImageCache.swift in Sources */,
 				2552ADD725E730E200CC9C91 /* homeRouter.swift in Sources */,
@@ -720,6 +743,7 @@
 				2552ADEC25E74EE600CC9C91 /* AllGamesInteractor.swift in Sources */,
 				2552AE3425E8943700CC9C91 /* GamePresenter.swift in Sources */,
 				2552AE1125E8887100CC9C91 /* HeroStatInteractor.swift in Sources */,
+				25624C3D25EC843200CE36CF /* SkillsUpgradeView.swift in Sources */,
 				25C9B21925DA970600DD9500 /* AllGamesView.swift in Sources */,
 				2552AE6425E951AB00CC9C91 /* DetailRouter.swift in Sources */,
 				25FD899E25E4193E00B85E64 /* homePresenter.swift in Sources */,

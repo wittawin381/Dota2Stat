@@ -15,7 +15,8 @@ protocol DetailModalViewLogic : class {
 class DetailModalView : UIViewController, DetailModalViewLogic {
     var router : (DetailRouterLogic & DetailDataPassing)?
     var interactor : DetailInteractor?
-    
+    var urls = [URLS]()
+    private lazy var dataSource = makeDataSource()
     
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -24,6 +25,10 @@ class DetailModalView : UIViewController, DetailModalViewLogic {
     @IBOutlet var heroName: UILabel!
     @IBOutlet var playerName: UILabel!
     @IBOutlet var kda: UILabel!
+    
+    let playerStatView = PlayerStatView()
+    let playerStatView2 = PlayerStatView()
+    let skillsUpgradeView = SkillsUpgradeView()
     
     private var detail : DetailModal.UI.ViewModel.Detail!
     private var page1 : DetailModal.UI.ViewModel.Page1!
@@ -60,14 +65,12 @@ class DetailModalView : UIViewController, DetailModalViewLogic {
     func initPageView() {
         //scrollView.contentSize = CGSize(width: view.frame.width * 2, height: scrollView.frame.height)
         stackView.distribution = .fillEqually
-        let playerStatView = PlayerStatView(frame: CGRect(x:0 , y: 0, width: stackView.frame.width, height: stackView.frame.size.height))
-        let playerStatView2 = PlayerStatView(frame: CGRect(x:0, y: 0, width: stackView.frame.width, height: stackView.frame.size.height))
         stackView.addArrangedSubview(playerStatView)
-        stackView.addArrangedSubview(playerStatView2)
+        stackView.addArrangedSubview(skillsUpgradeView)
         NSLayoutConstraint.activate([
             playerStatView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-//            playerStatView.heightAnchor.constraint(equalTo: scrollView.heightAnchor)
         ])
+        
     }
     
     func displayPlayerStat(viewModel: DetailModal.UI.ViewModel) {
@@ -92,10 +95,45 @@ class DetailModalView : UIViewController, DetailModalViewLogic {
                 items[i].backgroundColor = .systemGray5
             }
         }
+        playerStatView.damage.text = viewModel.page1.damage
+        playerStatView.denies.text = viewModel.page1.denies
+        playerStatView.gpm.text = viewModel.page1.gpm
+        playerStatView.lastHit.text = viewModel.page1.lastHit
+        playerStatView.level.text = viewModel.page1.level
+        playerStatView.towerDmg.text = viewModel.page1.towerDmg
+        playerStatView.xpm.text = viewModel.page1.xpm
+        urls = viewModel.page2.skills
+        update(animate: false)
     }
 }
 
 
-extension DetailModalView {
+extension DetailModalView : UICollectionViewDelegate {
+    func makeDataSource() -> UICollectionViewDiffableDataSource<DetailModal.SkillsSection, URLS> {
+        return UICollectionViewDiffableDataSource<DetailModal.SkillsSection, URLS>(
+            collectionView: skillsUpgradeView.collectionView,
+            cellProvider: { collectionView, indexPath, item in
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SkillsCell", for: indexPath) as! SkillsUpgradeCollectionViewCell
+                let url = item
+                cell.level.text = String(indexPath.row + 1)
+                if url.url != nil {
+                    ImageCache.shared.fetchItemImg(url: url.url) { image in
+                        cell.skillImage.image = image
+                    }
+                }
+                else {
+                    cell.skillImage.image = nil
+                    cell.skillImage.backgroundColor = .systemGray5
+                }
+                return cell
+            }
+        )
+    }
     
+    func update(animate : Bool) {
+        var snapshot = NSDiffableDataSourceSnapshot<DetailModal.SkillsSection, URLS>()
+        snapshot.appendSections(DetailModal.SkillsSection.allCases)
+        snapshot.appendItems(urls)
+        dataSource.apply(snapshot,animatingDifferences: animate)
+    }
 }

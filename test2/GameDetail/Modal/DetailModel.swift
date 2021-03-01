@@ -11,8 +11,16 @@ protocol PageView {
     
 }
 
+struct URLS : Identifiable , Hashable{
+    let id = UUID()
+    var url : NSURL?
+}
+
 
 enum DetailModal {
+    enum SkillsSection : CaseIterable{
+        case skills
+    }
     enum UI {
         struct Request{}
         struct Response {
@@ -36,7 +44,7 @@ enum DetailModal {
                 var denies : String
             }
             struct Page2 : PageView {
-                var skills : [NSURL?]
+                var skills : [URLS]
             }
             var detail : Detail
             var page1 : Page1

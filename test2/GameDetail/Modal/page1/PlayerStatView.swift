@@ -11,6 +11,13 @@ import UIKit
 class PlayerStatView : UIView {
     
     @IBOutlet var container: UIView!
+    @IBOutlet var gpm: UILabel!
+    @IBOutlet var xpm: UILabel!
+    @IBOutlet var damage: UILabel!
+    @IBOutlet var level: UILabel!
+    @IBOutlet var towerDmg: UILabel!
+    @IBOutlet var lastHit: UILabel!
+    @IBOutlet var denies: UILabel!
     override init(frame: CGRect) {
         super.init(frame: frame)
         initView()

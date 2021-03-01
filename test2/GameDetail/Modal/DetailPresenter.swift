@@ -63,9 +63,14 @@ class DetailPresenter : DetailPresentLogic {
     }
     
     func getPage2(response: DetailModal.UI.Response) -> DetailModal.UI.ViewModel.Page2 {
-        var url = [NSURL?]()
+        var url = [URLS]()
         for item in response.playerDetail.ability_upgrades_arr {
-            url.append(NSURL(string: Dota.shared.getHeroImage(id: item)))
+            if let fullurl = Dota.shared.getAbilityImage(id: item!) {
+                url.append(URLS(url: NSURL(string: fullurl)))
+            }
+            else {
+                url.append(URLS(url: nil))
+            }
         }
         return DetailModal.UI.ViewModel.Page2(skills: url)
         
