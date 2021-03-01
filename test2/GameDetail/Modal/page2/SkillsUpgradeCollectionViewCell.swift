@@ -15,5 +15,5 @@ class SkillsUpgradeCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
 }

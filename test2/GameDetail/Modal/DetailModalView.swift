@@ -26,9 +26,13 @@ class DetailModalView : UIViewController, DetailModalViewLogic {
     @IBOutlet var playerName: UILabel!
     @IBOutlet var kda: UILabel!
     
+    @IBOutlet var segmentControl: UISegmentedControl!
+    @IBOutlet var myNavbar: UINavigationBar!
     let playerStatView = PlayerStatView()
     let playerStatView2 = PlayerStatView()
     let skillsUpgradeView = SkillsUpgradeView()
+    var marginLeft : CGFloat!
+    var marginRight : CGFloat!
     
     private var detail : DetailModal.UI.ViewModel.Detail!
     private var page1 : DetailModal.UI.ViewModel.Page1!
@@ -46,6 +50,11 @@ class DetailModalView : UIViewController, DetailModalViewLogic {
     override func viewDidLoad() {
         initPageView()
         interactor?.getPlayerData(request: DetailModal.UI.Request())
+        skillsUpgradeView.collectionView.delegate = self
+        scrollView.delegate = self
+        segmentControl.addTarget(self, action: #selector(switchSegment), for: .valueChanged)
+        marginLeft = (view.frame.width - (view.frame.width * 0.2 * 4) - 20 ) / 2
+        marginRight = marginLeft
     }
     
     func setup() {
@@ -74,6 +83,7 @@ class DetailModalView : UIViewController, DetailModalViewLogic {
     }
     
     func displayPlayerStat(viewModel: DetailModal.UI.ViewModel) {
+        self.myNavbar.topItem!.title = viewModel.detail.playerName
         self.detail = viewModel.detail
         self.page1 = viewModel.page1
         self.page2 = viewModel.page2
@@ -83,7 +93,7 @@ class DetailModalView : UIViewController, DetailModalViewLogic {
         playerName.text = viewModel.detail.playerName
         kda.text = viewModel.detail.kda
         heroName.text = viewModel.detail.heroName
-        for i in 0...8 {
+        for i in 0...5 {
             items[i].contentMode = .scaleAspectFill
             items[i].layer.cornerRadius = 3
             if viewModel.detail.items[i] != nil {
@@ -108,7 +118,7 @@ class DetailModalView : UIViewController, DetailModalViewLogic {
 }
 
 
-extension DetailModalView : UICollectionViewDelegate {
+extension DetailModalView : UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func makeDataSource() -> UICollectionViewDiffableDataSource<DetailModal.SkillsSection, URLS> {
         return UICollectionViewDiffableDataSource<DetailModal.SkillsSection, URLS>(
             collectionView: skillsUpgradeView.collectionView,
@@ -116,6 +126,11 @@ extension DetailModalView : UICollectionViewDelegate {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SkillsCell", for: indexPath) as! SkillsUpgradeCollectionViewCell
                 let url = item
                 cell.level.text = String(indexPath.row + 1)
+                cell.skillImage.layer.cornerRadius = 15
+                cell.skillImage.contentMode = .scaleAspectFill
+                cell.layer.borderColor = UIColor.systemGray5.cgColor
+                cell.layer.cornerRadius = 15
+                cell.layer.borderWidth = 1
                 if url.url != nil {
                     ImageCache.shared.fetchItemImg(url: url.url) { image in
                         cell.skillImage.image = image
@@ -135,5 +150,52 @@ extension DetailModalView : UICollectionViewDelegate {
         snapshot.appendSections(DetailModal.SkillsSection.allCases)
         snapshot.appendItems(urls)
         dataSource.apply(snapshot,animatingDifferences: animate)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = view.frame.width
+        return CGSize(width: width * 0.2, height: width * 0.2 + 30)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 20, left: marginLeft, bottom: 20, right: marginRight)
+    }
+    
+}
+
+extension DetailModalView {
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        let index = scrollView.contentOffset.x / scrollView.bounds.size.width
+        segmentControl.selectedSegmentIndex = Int(index)
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let index = scrollView.contentOffset.x / scrollView.bounds.size.width
+        print(index)
+        segmentControl.selectedSegmentIndex = Int(index)
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate {
+            let index = scrollView.contentOffset.x / scrollView.bounds.size.width
+            segmentControl.selectedSegmentIndex = Int(index)
+        }
+    }
+}
+
+
+extension DetailModalView {
+    @objc func switchSegment(_ segmentControl: UISegmentedControl) {
+        var frame = scrollView.frame
+        switch segmentControl.selectedSegmentIndex {
+        case 0:
+            frame.origin.x = frame.size.width * 0
+            scrollView.scrollRectToVisible(frame, animated: true)
+        case 1:
+            frame.origin.x = frame.size.width * 1
+            scrollView.scrollRectToVisible(frame, animated: true)
+        default:
+            return
+        }
     }
 }

@@ -18,7 +18,7 @@
             <rect key="frame" x="0.0" y="0.0" width="390" height="390"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="HeT-0F-yld">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="HeT-0F-yld">
                     <rect key="frame" x="15" y="0.0" width="360" height="390"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6wR-KR-YzN">
@@ -30,7 +30,6 @@
                 </collectionView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="HeT-0F-yld" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="PLT-Td-hwD"/>
                 <constraint firstItem="HeT-0F-yld" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="ZiK-80-lEb"/>

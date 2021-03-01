@@ -31,5 +31,7 @@ class SkillsUpgradeView : UIView {
     func initCollectionView() {
         let nib = UINib(nibName: "SkillsUpgradeCollectionViewCell", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: "SkillsCell")
+        collectionView.layer.cornerRadius = 15
+        collectionView.backgroundColor = .clear
     }
 }
