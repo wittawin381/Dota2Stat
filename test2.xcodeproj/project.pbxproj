@@ -63,6 +63,7 @@
 		258951DB25DC2BB400B36E68 /* RecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258951DA25DC2BB400B36E68 /* RecordModel.swift */; };
 		258951E025DCC2B900B36E68 /* RecordCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258951DF25DCC2B900B36E68 /* RecordCoordinator.swift */; };
 		258951EC25DD424A00B36E68 /* RecordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258951EB25DD424900B36E68 /* RecordCollectionViewCell.swift */; };
+		25A49E2225EDD363008BCAEB /* Key.plist in Resources */ = {isa = PBXBuildFile; fileRef = 25A49E2125EDD363008BCAEB /* Key.plist */; };
 		25C9B21925DA970600DD9500 /* AllGamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C9B21825DA970600DD9500 /* AllGamesView.swift */; };
 		25C9B22625DB542F00DD9500 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C9B22525DB542F00DD9500 /* Coordinator.swift */; };
 		25C9B22B25DB556700DD9500 /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C9B22A25DB556700DD9500 /* Storyboarded.swift */; };
@@ -158,6 +159,7 @@
 		258951DA25DC2BB400B36E68 /* RecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordModel.swift; sourceTree = "<group>"; };
 		258951DF25DCC2B900B36E68 /* RecordCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCoordinator.swift; sourceTree = "<group>"; };
 		258951EB25DD424900B36E68 /* RecordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCollectionViewCell.swift; sourceTree = "<group>"; };
+		25A49E2125EDD363008BCAEB /* Key.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Key.plist; sourceTree = "<group>"; };
 		25C9B21825DA970600DD9500 /* AllGamesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGamesView.swift; sourceTree = "<group>"; };
 		25C9B22525DB542F00DD9500 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		25C9B22A25DB556700DD9500 /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				25298017253AB96400ECEE6E /* Assets.xcassets */,
 				25298019253AB96400ECEE6E /* LaunchScreen.storyboard */,
 				2529801C253AB96400ECEE6E /* Info.plist */,
+				25A49E2125EDD363008BCAEB /* Key.plist */,
 				25298014253AB96200ECEE6E /* test2.xcdatamodeld */,
 				25C9B22525DB542F00DD9500 /* Coordinator.swift */,
 				258951DF25DCC2B900B36E68 /* RecordCoordinator.swift */,
@@ -572,6 +575,7 @@
 			files = (
 				2502A96125EA678700919251 /* PlayerStat.xib in Resources */,
 				253AD4FE25D905E40044C5C0 /* LobbyType.json in Resources */,
+				25A49E2225EDD363008BCAEB /* Key.plist in Resources */,
 				25624C2025EB7AE600CE36CF /* abilities.json in Resources */,
 				2529801B253AB96400ECEE6E /* LaunchScreen.storyboard in Resources */,
 				25624C3825EC841900CE36CF /* SkillUpgrade.xib in Resources */,

@@ -6,14 +6,14 @@
 //
 
 import Foundation
-import Combine
-
-class RecordVM {
-    var record = CurrentValueSubject<[Record],Error>([])
-    var subscription = Set<AnyCancellable>()
-    init() {
-        Dota.shared.record.sink(receiveCompletion: {_ in}, receiveValue: { value in
-            self.record.value = value
-        }).store(in: &subscription)
-    }
-}
+//import Combine
+//
+//class RecordVM {
+//    var record = CurrentValueSubject<[Record],Error>([])
+//    var subscription = Set<AnyCancellable>()
+//    init() {
+//        Dota.shared.record.sink(receiveCompletion: {_ in}, receiveValue: { value in
+//            self.record.value = value
+//        }).store(in: &subscription)
+//    }
+//}

@@ -33,6 +33,7 @@ class DetailModalView : UIViewController, DetailModalViewLogic {
     let skillsUpgradeView = SkillsUpgradeView()
     var marginLeft : CGFloat!
     var marginRight : CGFloat!
+    var scrollDirection : CGPoint!
     
     private var detail : DetailModal.UI.ViewModel.Detail!
     private var page1 : DetailModal.UI.ViewModel.Page1!
@@ -53,7 +54,7 @@ class DetailModalView : UIViewController, DetailModalViewLogic {
         skillsUpgradeView.collectionView.delegate = self
         scrollView.delegate = self
         segmentControl.addTarget(self, action: #selector(switchSegment), for: .valueChanged)
-        marginLeft = (view.frame.width - (view.frame.width * 0.2 * 4) - 20 ) / 2
+        marginLeft = (view.frame.width - (view.frame.width * 0.15 * 4) - 5 ) / 2
         marginRight = marginLeft
     }
     
@@ -126,7 +127,6 @@ extension DetailModalView : UICollectionViewDelegate, UICollectionViewDelegateFl
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SkillsCell", for: indexPath) as! SkillsUpgradeCollectionViewCell
                 let url = item
                 cell.level.text = String(indexPath.row + 1)
-                cell.skillImage.layer.cornerRadius = 15
                 cell.skillImage.contentMode = .scaleAspectFill
                 cell.layer.borderColor = UIColor.systemGray5.cgColor
                 cell.layer.cornerRadius = 15
@@ -154,33 +154,30 @@ extension DetailModalView : UICollectionViewDelegate, UICollectionViewDelegateFl
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = view.frame.width
-        return CGSize(width: width * 0.2, height: width * 0.2 + 30)
+        return CGSize(width: width * 0.16, height: width * 0.15 + 30)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 20, left: marginLeft, bottom: 20, right: marginRight)
+        return UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
     }
     
 }
 
 extension DetailModalView {
-    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        let index = scrollView.contentOffset.x / scrollView.bounds.size.width
-        segmentControl.selectedSegmentIndex = Int(index)
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        scrollDirection = scrollView.contentOffset
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
         let index = scrollView.contentOffset.x / scrollView.bounds.size.width
-        print(index)
-        segmentControl.selectedSegmentIndex = Int(index)
-    }
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if !decelerate {
-            let index = scrollView.contentOffset.x / scrollView.bounds.size.width
+        if scrollDirection.x - scrollView.contentOffset.x != 0 {
             segmentControl.selectedSegmentIndex = Int(index)
         }
+        
     }
+    
 }
 
 

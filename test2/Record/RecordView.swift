@@ -17,7 +17,7 @@ class RecordView : UIViewController, RecordViewLogic {
     
     
     var interactor : RecordBuisinessLogic?
-    var viewModel : RecordVM!
+//    var viewModel : RecordVM!
     var subscription = Set<AnyCancellable>()
     var records = [Record.Cell.ViewModel.Item]()
     private lazy var dataSource = makeDataSource()

@@ -12,37 +12,20 @@ import Alamofire
 class Dota {
     static let shared = Dota()
     var heroes = [Hero]()
-    let matches = CurrentValueSubject<[Match],AFError>([])
-    var heroesStat = CurrentValueSubject<[HeroesStat],AFError>([])
-    var record = CurrentValueSubject<[Record],AFError>([])
+//    let matches = CurrentValueSubject<[Match],AFError>([])
+//    var heroesStat = CurrentValueSubject<[HeroesStat],AFError>([])
+//    var record = CurrentValueSubject<[Record],AFError>([])
     var items = [String:Item]()
     var ability_ids = [String: String]()
     var abilities = [String: Ability]()
     var subscription = Set<AnyCancellable>()
     var isLoading : Bool = false
     private init() {
-//        OpenDota.shared.get(.matches,params: ["limit":20,"offset":0],withType: [Match].self).sink(receiveCompletion: {_ in }, receiveValue: { value in
-//            self.matches.value = value
-//        }).store(in: &subscription)
-//        OpenDota.shared.get(.heroes,withType: [HeroesStat].self).sink(receiveCompletion: {_ in},receiveValue: { (value) in
-//            self.heroesStat.value = value
-//        }).store(in: &subscription)
-//        
-//        OpenDota.shared.get(.record, withType: [Record].self).sink(receiveCompletion: {_ in}, receiveValue: { value in
-//            self.record.value = value
-//        }).store(in: &subscription)
-        
-//        var matchDetial : MatchDetail!
-//        OpenDota.shared.get("/matches/5840583942", withType: MatchDetail.self).sink(receiveCompletion: { _ in}, receiveValue: { value in
-//            matchDetial = value
-//            print(matchDetial)
-//        }).store(in: &subscription)
         
         heroes = jsonParse(from: "Heroes.json", type: [Hero].self)
         items = jsonParse(from: "Items.json", type: [String : Item].self)
         ability_ids = jsonParse(from: "abilityids.json", type: [String : String].self)
         abilities = jsonParse(from: "abilities.json", type: [String: Ability].self)
-        //        print(items.first(where: {$0.value.id == 303})?.value.img)
     }
     
     private func jsonParse<T:Codable>(from path : String, type : T.Type) -> T{

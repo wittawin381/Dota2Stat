@@ -38,7 +38,7 @@
                                                     <rect key="frame" x="88" y="0.0" width="77.666666666666686" height="70"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="kda" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VdC-7Z-4EC">
-                                                            <rect key="frame" x="0.0" y="44" width="29.666666666666668" height="15"/>
+                                                            <rect key="frame" x="0.0" y="44.666666666666664" width="29.666666666666668" height="14.333333333333336"/>
                                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -161,6 +161,44 @@
                                             <outletCollection property="itemsImg" destination="zcp-MB-eaQ" collectionClass="NSMutableArray" id="16E-sp-lbK"/>
                                             <outletCollection property="itemsImg" destination="XRD-c6-4T9" collectionClass="NSMutableArray" id="08c-5N-uiX"/>
                                         </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ScoreView" rowHeight="70" id="KJK-ZW-2Ur" customClass="StatCell" customModule="test2" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="125.33333206176758" width="350" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KJK-ZW-2Ur" id="dFf-ig-S0Z">
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="70"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Dcg-lh-KWg">
+                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="70"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hb4-29-7zN">
+                                                            <rect key="frame" x="0.0" y="0.0" width="175" height="70"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4uk-Kd-8N8">
+                                                                    <rect key="frame" x="108" y="25" width="42" height="21"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3V3-db-ATy">
+                                                            <rect key="frame" x="175" y="0.0" width="175" height="70"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        </view>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Dcg-lh-KWg" firstAttribute="top" secondItem="dFf-ig-S0Z" secondAttribute="top" id="55N-0b-ZeW"/>
+                                                <constraint firstItem="Dcg-lh-KWg" firstAttribute="leading" secondItem="dFf-ig-S0Z" secondAttribute="leading" id="LTQ-br-SEx"/>
+                                                <constraint firstAttribute="bottom" secondItem="Dcg-lh-KWg" secondAttribute="bottom" id="NSl-a9-GsI"/>
+                                                <constraint firstAttribute="trailing" secondItem="Dcg-lh-KWg" secondAttribute="trailing" id="pKJ-6P-9Kx"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -383,10 +421,10 @@
                                                 </constraints>
                                             </view>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Q4g-DX-Qmh">
-                                                <rect key="frame" x="30" y="273" width="131" height="31"/>
+                                                <rect key="frame" x="30" y="273" width="203" height="31"/>
                                                 <segments>
-                                                    <segment title="First"/>
-                                                    <segment title="Second"/>
+                                                    <segment title="Statistic"/>
+                                                    <segment title="Skill Upgrade"/>
                                                 </segments>
                                             </segmentedControl>
                                         </subviews>
