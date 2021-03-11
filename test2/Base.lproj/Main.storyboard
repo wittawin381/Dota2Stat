@@ -202,16 +202,9 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" id="M9V-M0-jp1">
-                                <rect key="frame" x="0.0" y="336" width="390" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="FX6-iT-KJd">
-                                        <rect key="frame" x="185" y="65" width="20" height="20"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </activityIndicatorView>
-                                </subviews>
-                            </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="FX6-iT-KJd">
+                                <rect key="frame" x="185" y="417" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ah5-QF-l2Z"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -219,12 +212,13 @@
                             <constraint firstItem="vtF-Lc-DsT" firstAttribute="leading" secondItem="0Zs-VW-HYV" secondAttribute="leading" id="E2C-Ga-5IO"/>
                             <constraint firstItem="vtF-Lc-DsT" firstAttribute="top" secondItem="0Zs-VW-HYV" secondAttribute="top" id="Iby-AG-A35"/>
                             <constraint firstItem="vtF-Lc-DsT" firstAttribute="bottom" secondItem="Ah5-QF-l2Z" secondAttribute="bottom" id="Wlr-JP-jDk"/>
+                            <constraint firstItem="FX6-iT-KJd" firstAttribute="centerY" secondItem="Ah5-QF-l2Z" secondAttribute="centerY" id="XtN-zB-ScE"/>
                             <constraint firstItem="vtF-Lc-DsT" firstAttribute="trailing" secondItem="Ah5-QF-l2Z" secondAttribute="trailing" id="g90-D2-KPl"/>
+                            <constraint firstItem="FX6-iT-KJd" firstAttribute="centerX" secondItem="Ah5-QF-l2Z" secondAttribute="centerX" id="iKh-DE-2Ud"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="FX6-iT-KJd" id="aJp-rq-jPo"/>
-                        <outlet property="activityView" destination="M9V-M0-jp1" id="jIy-TI-9z3"/>
                         <outlet property="tableView" destination="vtF-Lc-DsT" id="QmT-E7-p5K"/>
                         <segue destination="ugh-Ra-JD4" kind="presentation" identifier="ShowPlayerDetail" id="FNs-J2-g5j"/>
                     </connections>
@@ -491,15 +485,15 @@
                         <outlet property="scrollView" destination="YEI-9l-I43" id="Cwx-v1-nR4"/>
                         <outlet property="segmentControl" destination="Q4g-DX-Qmh" id="q6L-Nx-40m"/>
                         <outlet property="stackView" destination="IBh-Rc-hG2" id="9ig-bg-tLH"/>
-                        <outletCollection property="items" destination="FL3-y9-3Lx" collectionClass="NSMutableArray" id="ULY-DN-oB5"/>
-                        <outletCollection property="items" destination="Axz-RS-Jmq" collectionClass="NSMutableArray" id="8hn-MD-3Ur"/>
-                        <outletCollection property="items" destination="sYL-RY-DAL" collectionClass="NSMutableArray" id="yjz-7N-ns9"/>
-                        <outletCollection property="items" destination="PjR-YH-Ta7" collectionClass="NSMutableArray" id="geO-aZ-lFA"/>
-                        <outletCollection property="items" destination="8VK-iG-uzF" collectionClass="NSMutableArray" id="Sxk-LS-EOV"/>
-                        <outletCollection property="items" destination="ZUd-mQ-Zl6" collectionClass="NSMutableArray" id="Slo-su-IqD"/>
-                        <outletCollection property="items" destination="Z4e-tA-q3M" collectionClass="NSMutableArray" id="Q5h-W0-YG9"/>
-                        <outletCollection property="items" destination="AHK-yo-S3N" collectionClass="NSMutableArray" id="5IL-sC-c8H"/>
-                        <outletCollection property="items" destination="FNo-vx-Hub" collectionClass="NSMutableArray" id="cqW-lL-pKW"/>
+                        <outletCollection property="items" destination="FNo-vx-Hub" collectionClass="NSMutableArray" id="ho0-at-eob"/>
+                        <outletCollection property="items" destination="Z4e-tA-q3M" collectionClass="NSMutableArray" id="tRH-dU-5IX"/>
+                        <outletCollection property="items" destination="PjR-YH-Ta7" collectionClass="NSMutableArray" id="OX3-Ws-JWK"/>
+                        <outletCollection property="items" destination="FL3-y9-3Lx" collectionClass="NSMutableArray" id="rZZ-Yh-cKV"/>
+                        <outletCollection property="items" destination="sYL-RY-DAL" collectionClass="NSMutableArray" id="NPN-4U-kXS"/>
+                        <outletCollection property="items" destination="8VK-iG-uzF" collectionClass="NSMutableArray" id="fSF-m3-Tv5"/>
+                        <outletCollection property="items" destination="AHK-yo-S3N" collectionClass="NSMutableArray" id="chW-nQ-mgm"/>
+                        <outletCollection property="items" destination="Axz-RS-Jmq" collectionClass="NSMutableArray" id="yzF-8j-XuV"/>
+                        <outletCollection property="items" destination="ZUd-mQ-Zl6" collectionClass="NSMutableArray" id="ZeW-TI-4KO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lEW-S1-9o2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -749,23 +743,29 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oT5-jr-o7w">
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oT5-jr-o7w">
                                 <rect key="frame" x="0.0" y="88" width="390" height="673"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="ZiL-dW-LJx">
-                                        <rect key="frame" x="185" y="230" width="20" height="20"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="ZiL-dW-LJx">
+                                        <rect key="frame" x="185" y="326.66666666666669" width="20" height="20"/>
                                     </activityIndicatorView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="ZiL-dW-LJx" firstAttribute="centerY" secondItem="oT5-jr-o7w" secondAttribute="centerY" id="9RU-T1-DDu"/>
+                                    <constraint firstItem="ZiL-dW-LJx" firstAttribute="centerX" secondItem="oT5-jr-o7w" secondAttribute="centerX" id="oWG-ff-K8L"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="oT5-jr-o7w" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8cU-Du-NmY"/>
                             <constraint firstItem="9c0-ae-SWH" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="AHg-nc-mSa"/>
                             <constraint firstItem="9c0-ae-SWH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="CzV-0S-6Sy"/>
                             <constraint firstItem="9c0-ae-SWH" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ULE-qo-k55"/>
+                            <constraint firstItem="oT5-jr-o7w" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Y4U-WL-ArW"/>
+                            <constraint firstItem="oT5-jr-o7w" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ilK-L4-x0r"/>
+                            <constraint firstItem="oT5-jr-o7w" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="tRy-iu-xgX"/>
                             <constraint firstItem="9c0-ae-SWH" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="uYx-Be-DiB"/>
                         </constraints>
                     </view>
@@ -1115,7 +1115,7 @@
                                                         <constraint firstItem="f7P-hq-5Lb" firstAttribute="centerY" secondItem="ehg-Vd-7gk" secondAttribute="centerY" id="M8a-DA-zFm"/>
                                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="f7P-hq-5Lb" secondAttribute="trailing" id="h6H-r4-Yef"/>
                                                         <constraint firstItem="f7P-hq-5Lb" firstAttribute="leading" secondItem="ehg-Vd-7gk" secondAttribute="leading" id="mea-j7-uq5"/>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="oKr-r6-bOg"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="999" constant="90" id="oKr-r6-bOg"/>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TRI-0M-RIH">

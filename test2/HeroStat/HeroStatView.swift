@@ -44,6 +44,7 @@ class HeroStatView : UIViewController, HeroStatViewLogic {
         let router = HeroStatRouter()
         viewController.interactor = interactor
         viewController.router = router
+        router.viewController = viewController
         router.dataStore = interactor
         interactor.presenter = presenter
         presenter.viewController = viewController
@@ -88,6 +89,10 @@ extension HeroStatView : UITableViewDelegate {
         snapshot.appendSections(HeroStat.HeroStatSection.allCases)
         snapshot.appendItems(stats, toSection: .stat)
         dataSource.apply(snapshot,animatingDifferences: animate)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        router?.routeToAllGamesByHero()
     }
 }
 

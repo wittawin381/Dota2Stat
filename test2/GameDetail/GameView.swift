@@ -21,7 +21,7 @@ class GameView : UIViewController, GameViewLogic {
     var matchID : String!
     private lazy var dataSource = makeDataSource()
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var activityView: UIView!
+//    @IBOutlet weak var activityView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nil, bundle: nil)
@@ -61,7 +61,7 @@ class GameView : UIViewController, GameViewLogic {
         update()
         activityIndicator.stopAnimating()
         activityIndicator.isHidden = true
-        activityView.isHidden = true
+//        activityView.isHidden = true
     }
     
     func initGame(viewModel: Game.Init.ViewModel) {

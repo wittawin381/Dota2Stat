@@ -11,6 +11,7 @@ import UIKit
 protocol HomeRouterLogic {
     func routeToAllGames()
     func routeToHeroStat()
+    func routeToAllGamesByHero()
     func routeToGame()
 }
 
@@ -40,6 +41,12 @@ class HomeRouter : HomeRouterDataPassing, HomeRouterLogic {
         navigate(to: vc, from: viewController!)
     }
     
+    func routeToAllGamesByHero() {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "AllGamesView") as! AllGamesView
+        passDataToAllGamesByHero(source: dataStore!  , destination: &(vc.router!.dataStore!) )
+        navigate(to: vc, from: viewController!)
+    }
+    
     func navigate(to destination: UIViewController, from source: UIViewController){
         source.navigationController?.pushViewController(destination, animated: true)
         
@@ -47,6 +54,12 @@ class HomeRouter : HomeRouterDataPassing, HomeRouterLogic {
     
     func passDataToAllGames(source : HomeDataStore, destination : inout AllGamesDataStore) {
         destination.games = source.games!
+    }
+    
+    func passDataToAllGamesByHero(source : HomeDataStore, destination : inout AllGamesDataStore) {
+        destination.mode = .byHero
+        let index = viewController?.listTable.indexPathForSelectedRow?.row
+        destination.heroID = Int(source.stats![index!].hero_id!)
     }
     
     func passDataToHeroStat(source : HomeDataStore, destination : inout HeroStatDataStore) {

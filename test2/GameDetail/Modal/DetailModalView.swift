@@ -94,7 +94,7 @@ class DetailModalView : UIViewController, DetailModalViewLogic {
         playerName.text = viewModel.detail.playerName
         kda.text = viewModel.detail.kda
         heroName.text = viewModel.detail.heroName
-        for i in 0...5 {
+        for i in 0...8 {
             items[i].contentMode = .scaleAspectFill
             items[i].layer.cornerRadius = 3
             if viewModel.detail.items[i] != nil {

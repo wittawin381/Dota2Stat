@@ -107,6 +107,8 @@ extension ViewController : UITableViewDelegate {
         switch indexPath.section {
         case 0:
             router?.routeToGame()
+        case 1:
+            router?.routeToAllGamesByHero()
         default:
             return
         }

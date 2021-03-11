@@ -69,7 +69,7 @@ class DetailPresenter : DetailPresentLogic {
                 url.append(URLS(url: NSURL(string: fullurl)))
             }
             else {
-                url.append(URLS(url: nil))
+                url.append(URLS(url:NSURL(string: "https://www.dotabuff.com/assets/skills/talent-4de3b26139290418b6d5c15d06719860a08d04d57a5ebc6c0ef30fce86cc8efb.jpg")))
             }
         }
         return DetailModal.UI.ViewModel.Page2(skills: url)

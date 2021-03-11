@@ -13,10 +13,12 @@ enum AllGames {
     enum GameSection : CaseIterable {
         case matches
     }
-    
+    enum Mode {
+        case normal
+        case byHero
+    }
     enum Cell {
         struct Request {
-            
         }
         struct Response {
             var items : [Match]

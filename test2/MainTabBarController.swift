@@ -39,7 +39,7 @@ class MainTabBarController : UITabBarController {
     
     func initRecordView() {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "RecordView") as! RecordView
-        recnav.tabBarItem = UITabBarItem(title: "Overview", image: UIImage(systemName: "house"), tag: 0)
+        recnav.tabBarItem = UITabBarItem(title: "Record", image: UIImage(systemName: "square.grid.2x2"), tag: 0)
         recnav.pushViewController(vc, animated: true)
     }
 }
