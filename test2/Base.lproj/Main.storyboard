@@ -162,7 +162,7 @@
                                             <outletCollection property="itemsImg" destination="XRD-c6-4T9" collectionClass="NSMutableArray" id="08c-5N-uiX"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ScoreView" rowHeight="70" id="KJK-ZW-2Ur" customClass="StatCell" customModule="test2" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ScoreCell" rowHeight="70" id="KJK-ZW-2Ur" customClass="ScoreCell" customModule="test2" customModuleProvider="target">
                                         <rect key="frame" x="20" y="125.33333206176758" width="350" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KJK-ZW-2Ur" id="dFf-ig-S0Z">
@@ -175,19 +175,40 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hb4-29-7zN">
                                                             <rect key="frame" x="0.0" y="0.0" width="175" height="70"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4uk-Kd-8N8">
-                                                                    <rect key="frame" x="108" y="25" width="42" height="21"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4uk-Kd-8N8">
+                                                                    <rect key="frame" x="87" y="14.666666666666668" width="80" height="40.666666666666657"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <constraints>
+                                                                <constraint firstItem="4uk-Kd-8N8" firstAttribute="centerY" secondItem="hb4-29-7zN" secondAttribute="centerY" id="UKV-uD-MyU"/>
+                                                                <constraint firstAttribute="trailing" secondItem="4uk-Kd-8N8" secondAttribute="trailing" constant="8" id="XVC-eF-dns"/>
+                                                                <constraint firstItem="4uk-Kd-8N8" firstAttribute="top" secondItem="hb4-29-7zN" secondAttribute="top" priority="999" constant="14.67" id="cZ7-W9-c0x"/>
+                                                                <constraint firstAttribute="bottom" secondItem="4uk-Kd-8N8" secondAttribute="bottom" priority="999" constant="14.67" id="n9I-oq-Dsb"/>
+                                                                <constraint firstItem="4uk-Kd-8N8" firstAttribute="leading" secondItem="hb4-29-7zN" secondAttribute="leading" priority="999" constant="87" id="sNL-Y0-WlE"/>
+                                                            </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3V3-db-ATy">
                                                             <rect key="frame" x="175" y="0.0" width="175" height="70"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcX-vy-ftO">
+                                                                    <rect key="frame" x="8" y="14.666666666666668" width="80" height="40.666666666666657"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="bottom" secondItem="tcX-vy-ftO" secondAttribute="bottom" constant="14.67" id="OWx-sG-6yp"/>
+                                                                <constraint firstItem="tcX-vy-ftO" firstAttribute="leading" secondItem="3V3-db-ATy" secondAttribute="leading" constant="8" id="Rcj-u1-6ii"/>
+                                                                <constraint firstAttribute="trailing" secondItem="tcX-vy-ftO" secondAttribute="trailing" priority="999" constant="87" id="Sg1-a3-mU3"/>
+                                                                <constraint firstItem="tcX-vy-ftO" firstAttribute="centerY" secondItem="3V3-db-ATy" secondAttribute="centerY" id="cyq-mx-9hy"/>
+                                                                <constraint firstItem="tcX-vy-ftO" firstAttribute="top" secondItem="3V3-db-ATy" secondAttribute="top" constant="14.67" id="taQ-Cr-xSZ"/>
+                                                            </constraints>
                                                         </view>
                                                     </subviews>
                                                 </stackView>
@@ -199,6 +220,10 @@
                                                 <constraint firstAttribute="trailing" secondItem="Dcg-lh-KWg" secondAttribute="trailing" id="pKJ-6P-9Kx"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="direScore" destination="4uk-Kd-8N8" id="OK8-LC-dEe"/>
+                                            <outlet property="radiantScore" destination="tcX-vy-ftO" id="3G4-B6-p3q"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

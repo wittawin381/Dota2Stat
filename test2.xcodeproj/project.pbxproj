@@ -11,6 +11,7 @@
 		2502A95525E9FB9100919251 /* ImageResize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2502A95425E9FB9100919251 /* ImageResize.swift */; };
 		2502A96125EA678700919251 /* PlayerStat.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2502A96025EA678700919251 /* PlayerStat.xib */; };
 		2502A96625EA914900919251 /* PlayerStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2502A96525EA914900919251 /* PlayerStatView.swift */; };
+		251551C626006E2B003A515D /* ScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251551C526006E2B003A515D /* ScoreCell.swift */; };
 		2529800C253AB96200ECEE6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2529800B253AB96200ECEE6E /* AppDelegate.swift */; };
 		2529800E253AB96200ECEE6E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2529800D253AB96200ECEE6E /* SceneDelegate.swift */; };
 		25298010253AB96200ECEE6E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2529800F253AB96200ECEE6E /* ViewController.swift */; };
@@ -101,6 +102,7 @@
 		2502A95425E9FB9100919251 /* ImageResize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageResize.swift; sourceTree = "<group>"; };
 		2502A96025EA678700919251 /* PlayerStat.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerStat.xib; sourceTree = "<group>"; };
 		2502A96525EA914900919251 /* PlayerStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStatView.swift; sourceTree = "<group>"; };
+		251551C526006E2B003A515D /* ScoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCell.swift; sourceTree = "<group>"; };
 		25298008253AB96200ECEE6E /* test2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2529800B253AB96200ECEE6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2529800D253AB96200ECEE6E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 			isa = PBXGroup;
 			children = (
 				2552AE4325E8A47D00CC9C91 /* StatCell.swift */,
+				251551C526006E2B003A515D /* ScoreCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -717,6 +720,7 @@
 				2552ADFC25E7777800CC9C91 /* AllGamesRouter.swift in Sources */,
 				2552AE3E25E8944C00CC9C91 /* GameRouter.swift in Sources */,
 				2552AE1625E888AF00CC9C91 /* HeroStatPresenter.swift in Sources */,
+				251551C626006E2B003A515D /* ScoreCell.swift in Sources */,
 				2551491D25D7F616008D7436 /* homeModel.swift in Sources */,
 				25298016253AB96200ECEE6E /* test2.xcdatamodeld in Sources */,
 				2552AE3925E8944200CC9C91 /* GameModel.swift in Sources */,

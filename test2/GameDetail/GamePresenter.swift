@@ -47,8 +47,16 @@ class GamePresenter : GamePresentLogic {
         }
         dire.append(contentsOf: Array(players.prefix(5)))
         radiant.append(contentsOf: players.suffix(5))
-        
-        viewController?.displayGame(viewModel: Game.Cell.ViewModel(dire: dire, radiant: radiant))
+        viewController?.displayGame(
+            viewModel: Game.Cell.ViewModel(
+                score: [Game.Cell.ViewModel.Score(
+                    radiantScore: response.game.radiant_score ?? 0,
+                    direScore: response.game.dire_score ?? 0,
+                    radiantWin: response.game.radiant_win!),
+                    
+                ],
+                dire: dire,
+                radiant: radiant))
     }
     
     func initGame(response: Game.Init.Response) {

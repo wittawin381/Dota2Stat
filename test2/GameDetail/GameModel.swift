@@ -8,6 +8,9 @@
 import Foundation
 
 struct MatchDetail : Codable {
+    var dire_score : Int?
+    var radiant_score : Int?
+    var radiant_win : Bool?
     var players : [Player]
 }
 
@@ -40,6 +43,7 @@ struct Player : Codable {
 
 enum Game {
     enum GameSection : CaseIterable {
+        case score
         case radiant
         case dire
     }
@@ -51,8 +55,10 @@ enum Game {
             var game : MatchDetail
         }
         struct ViewModel {
-            struct About : Hashable {
-                
+            struct Score : Hashable {
+                var radiantScore : Int
+                var direScore : Int
+                var radiantWin : Bool
             }
             struct Stat : Hashable {
                 var heroImg : String
@@ -61,6 +67,7 @@ enum Game {
                 var kdaPercent : String
                 var items: [NSURL?]
             }
+            var score : [Score]
             var dire : [Stat]
             var radiant : [Stat]
         }

@@ -27,7 +27,6 @@ class GameInteractor : GameBusinessLogic, GameDataStore {
 
     
     func fetchGame(request: Game.Cell.Request) {
-        print("/matches/\(match_id)")
         OpenDota.shared.get("/matches/\(match_id ?? "")", withType: MatchDetail.self).sink(receiveCompletion: {_ in}, receiveValue: {[unowned self] game in
             self.games = game
             self.presenter?.presentGame(response: Game.Cell.Response(game: game))

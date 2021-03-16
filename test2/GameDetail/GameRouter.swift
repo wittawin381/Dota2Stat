@@ -31,7 +31,7 @@ class GameRouter : GameRouterLogic, GameDataPassing {
     }
     
     func passData(source : GameDataStore, destination : inout DetailDataStore) {
-        let selectedIndex = (viewController?.tableView.indexPathForSelectedRow?.row)! + (5 * (viewController?.tableView.indexPathForSelectedRow?.section)!)
+        let selectedIndex = (viewController?.tableView.indexPathForSelectedRow?.row)! + (5 * ((viewController?.tableView.indexPathForSelectedRow?.section)! - 1))
         destination.detail = source.games?.players[selectedIndex]
     }
 }
