@@ -20,6 +20,7 @@ class OpenDota {
         case heroes
         case winlose
         case record
+        case peer
     }
     
     func get<T:Codable>(_ type: DataType, params: [String : Any] = [:], withType: T.Type) -> Future<T,Error>{
@@ -34,6 +35,8 @@ class OpenDota {
             geturl = url + "/players" + accountID + "/wl"
         case .record:
             geturl = url + "/players" + accountID + "/totals"
+        case .peer:
+            geturl = url + "/players" + accountID + "/peers"
         }
 
         return Future({promise in

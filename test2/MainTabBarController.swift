@@ -12,12 +12,14 @@ class MainTabBarController : UITabBarController {
 //    let homeTab =
     let recnav = UINavigationController()
     let homenav = UINavigationController()
+    let peernav = UINavigationController()
     override func viewDidLoad() {
         recnav.navigationBar.prefersLargeTitles = true
         homenav.navigationBar.prefersLargeTitles = true
         initHome()
         initRecordView()
-        viewControllers = [homenav,recnav]
+        initPeersView()
+        viewControllers = [homenav,recnav,peernav]
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -39,7 +41,13 @@ class MainTabBarController : UITabBarController {
     
     func initRecordView() {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "RecordView") as! RecordView
-        recnav.tabBarItem = UITabBarItem(title: "Record", image: UIImage(systemName: "square.grid.2x2"), tag: 0)
+        recnav.tabBarItem = UITabBarItem(title: "Record", image: UIImage(systemName: "square.grid.2x2"), tag: 1)
         recnav.pushViewController(vc, animated: true)
+    }
+    
+    func initPeersView() {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "PeersView") as! PeersView
+        peernav.tabBarItem = UITabBarItem(title: "Peers", image: UIImage(systemName: "square.grid.2x2"), tag: 2)
+        peernav.pushViewController(vc, animated: true)
     }
 }
