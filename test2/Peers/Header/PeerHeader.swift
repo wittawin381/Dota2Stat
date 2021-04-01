@@ -43,7 +43,6 @@ class PeerHeader : UIView {
         let winWith = category(title: "Win With")
         playWith.translatesAutoresizingMaskIntoConstraints = false
         winWith.translatesAutoresizingMaskIntoConstraints = false
-//        backgroundColor = .red
         addSubview(playWith)
         addSubview(winWith)
         NSLayoutConstraint.activate([
